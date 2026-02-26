@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarahah</title>
+    <link rel="shortcut icon" href="img/favicon-32x32.png" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+
+
+<div class="LoaderConatiner">
+        <div class="LoaderConatinerAfter"></div>
+        <div class="loader"></div>
+        <div class="LoaderConatinerBefore"></div>
+</div>
+<% if (error && error.length> 0) { %>
+<div class="alert alert-danger custom-alert" id="auto-close-alert">
+            <%= error[0] %>
+</div>
+<% } %>
+<% if (success && success.length> 0) { %>
+<div class="alert alert-success custom-alert" id="auto-close-alert">
+                    <%= success[0] %>
+</div>
+<% } %>
+
+
+
+
+<!-- /navbar -->
+<nav class="navbar navbar-expand-lg bg-custom navbar-dark bg-dark ">
+    <div class="container">
+        <a class="navbar-brand" href="/massage"><img src="img/logo300.png" width="54" alt=""> </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+ Menu <span class="navbar-toggler-icon"></span>
+</button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto ">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/massage">Messages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/ChangeUserData">Settings</a>
+                </li>
+            
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container text-center py-5 my-5 text-center">
+    <div class="card pt-5">
+        <a href="" data-toggle="modal" data-target="#profile">
+            <% if(userImg.public_id && userImg.secure_url){ %>
+              <img src="<%= userImg.secure_url %>" class="avatar  " style="border: #1CB5E0 solid 3px; border-radius: 100px;" alt="">
+            <% } else { %>
+                <img src="img/avatar.png" class="avatar  " style="border: #1CB5E0 solid 3px; border-radius: 100px;" alt="">
+            <% } %>
+        </a>
+        <h3 class="py-2"><%= session.userName %></h3>
+        <button data-toggle="modal" data-target="#share" class="btn btn-default-outline share "><i class="fas fa-share-alt"></i>  Share Profile</button>
+    </div>
+</div>
+
+
+<!--  Share profile Modal -->
+<div class="modal fade" id="share" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Share Profile</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+            </div>
+            <div class="modal-body">
+                
+             <a target="_blank" href="<%= link %>"><%= link %></a>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /modal -->
+
+
+
+<!-- =================messages=================== -->
+<div class="container text-center my-5 text-center">
+    <div class="row">
+        <% for( let i = 0; i < massage.length; i++ ) { %>
+        <div class="col-md-12">
+            <div class="card py-5">
+                <% if (massage.length) { %>
+                    <p> <%= massage[i].contant %></p>
+                <% } %>
+            </div>
+        </div>
+        <% } %>
+
+        
+        <% for( let index = 0; index == massage.length; index++ ) { %>
+            <div class="col-md-12"> 
+                <div class="card py-5">
+                    <p>"You don't have any messages..." </p>
+            </div>  
+        <% } %>
+    </div>
+ 
+</div>
+
+
+
+
+
+
+
+<%- include("footer.ejs")%>

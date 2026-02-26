@@ -1,0 +1,56 @@
+
+<%- include("header.ejs")%>
+
+<div class="container text-center py-5 my-5 text-center">
+    <div class="card py-5 mb-5">
+
+
+         <% if(userImg.public_id && userImg.secure_url){ %>
+            <img id="changeUserImgAvatar" src="<%= userImg.secure_url %>" class="avatar position-absolute " style="border: #1CB5E0 solid 3px; border-radius: 100px;" alt="">
+        <% } else { %>
+            <img id="changeUserImgAvatar" src="/img/avatar.png" class="avatar position-absolute " style="border: #1CB5E0 solid 3px; border-radius: 100px;" alt="">
+        <% } %> 
+
+
+
+
+        <h3 class="py-2 "><%= session.userName %></h3>
+        <p class="py-2 text-secondary"><%= AboutUser %></p>
+
+
+        <div class="container w-50 m-auto">
+            <form action="/sendMasg/<%= session.userId %>" method="post">
+                <textarea class="form-control" name="masg" id="" cols="10" rows="9" placeholder="You cannot send a Sarahah to yourself, share your profile with your friends :)"></textarea>
+                <button class="btn btn-outline-info mt-3"><i class="far fa-paper-plane"></i> Send</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+<!--  Share profile Modal -->
+<div class="modal fade" id="share" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Share Profile</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+            </div>
+            <div class="modal-body">
+                <p>host/messages/id</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /modal -->
+
+
+
+
+<%- include("footer.ejs")%>

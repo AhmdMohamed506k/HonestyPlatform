@@ -1,0 +1,887 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+body {
+  background-color: #f5f8fa;
+  overflow: hidden !important;
+  font-family: "Nunito", sans-serif;
+
+}
+
+.bg-custom {
+  background-color: #10bbb3 !important;
+}
+
+
+
+
+/* ====== NavBar > */
+.nav-link {
+  color: #fff !important;
+}
+
+.MainBtnGroup .mybtn-default-outline {
+
+
+  color: #0da39c !important;
+  background-color: transparent;
+  border-color: #10BBB3;
+  width: 200px;
+  border-radius: 50px;
+}
+
+.MainBtnGroup .mybtn-default-outline {
+  color: #fff !important;
+  background-color: #10BBB3;
+  box-shadow: none;
+
+}
+.btn-default-Btn {
+  display: block;
+  background-color: #0da39c !important;
+  color: white;
+  border-radius: 8px;
+  border-color: #1088bb;
+  width: 40%;
+  transition: all 0.8s;
+  margin-left: auto;
+}
+.btn-default-Btn:hover {
+  border-color: #1088bb;
+  background-color: white;
+  box-shadow: none;
+  border-radius: 20px;
+  transform: translateX(10px);
+}
+
+.forgot:hover {
+  color: #10BBB3 !important;
+}
+.login {
+  color: #0da39c;
+}
+.user-icon {
+  font-size: 60px;
+  color: #C0C0C0;
+}
+.avatar {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+}
+.form-control {
+  margin: 16px 0px 16px 0px;
+}
+.share {
+  margin: 0px auto 10px auto;
+}
+.GoHomeBtn {
+  transition: all 0.4s;
+}
+.GoHomeBtn:hover {
+  transform: translateX(-10px);
+
+}
+.HaveAccountBtn {
+  transition: all 0.4s
+}
+.HaveAccountBtn:hover {
+  transform: translateX(-10px);
+}
+/* NavBtn1 */
+.button {
+  position: relative;
+  width: 110px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 100px;
+  border: 1px solid #0da39c;
+  background-color: #0da39c;
+}
+.button,
+.button__icon,
+.button__text {
+  transition: all 0.3s;
+}
+.button .button__text {
+  transform: translateX(4px) translateY(-2px);
+  color: #fff;
+  font-weight: 600;
+}
+.button .button__icon {
+  position: absolute;
+  transform: translateX(67px);
+  height: 100%;
+  width: 39px;
+  border-radius: 100px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button .svg {
+  width: 22px;
+  transform: translateY(1px);
+  stroke: #fff;
+}
+.button:hover {
+  background: #0da39c;
+}
+.button:hover .button__text {
+  color: transparent;
+}
+.button:hover .button__icon {
+  width: 110px;
+  background-color: #0da39c;
+  transform: translateX(-6px);
+}
+.button:active .button__icon {
+  background-color: #0da39c;
+}
+.button:active {
+  border: 1px solid #0da39c;
+}
+/* NavBtn2 */
+.button2 {
+  position: relative;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 100px;
+
+  border: 1px solid #0da39c;
+  background-color: #0da39c;
+}
+.button2,
+.button__icon2,
+.button__text2 {
+  transition: all 0.3s;
+}
+.button2 .button__text2 {
+  transform: translateX(30px) translateY(-2px);
+  color: #fff;
+  font-weight: 600;
+}
+.button2 .button__icon2 {
+  position: absolute;
+  transform: translateX(-2px);
+  height: 100%;
+  width: 39px;
+  border-radius: 100px;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button2 .svg2 {
+  width: 22px;
+  transform: translateY(1px);
+  stroke: #fff;
+}
+.button2:hover {
+  background: #0da39c;
+}
+.button2:hover .button__text2 {
+  color: transparent;
+}
+.button2:hover .button__icon2 {
+  width: 100px;
+  background-color: #0da39c;
+  transform: translateX(-6px);
+}
+.button2:active .button__icon2 {
+  background-color: #0da39c;
+}
+.button2:active {
+  border: 1px solid #0da39c;
+}
+#PhoneBtn {
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+}
+
+
+
+
+/* ====================>Loader */
+.LoaderConatiner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+  z-index: 15;
+}
+.loader {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 50px;
+  padding: 8px;
+  opacity: 100%;
+  aspect-ratio: 1;
+  z-index: 16;
+  border-radius: 50%;
+  transition: all 0.5s ease-in-out;
+
+  background: #25b09b;
+  --_m:
+    conic-gradient(#0000 10%, #000),
+    linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+  mask: var(--_m);
+  -webkit-mask-composite: source-out;
+  mask-composite: subtract;
+  animation: l3 1s infinite linear;
+}
+.LoaderConatinerAfter {
+  content: " ";
+  position: fixed;
+  z-index: 15;
+  height: 770px;
+  width: 100%;
+
+  transition: all 0.8s ease-in-out;
+  background-color: white;
+}
+.LoaderConatinerBefore {
+  content: " ";
+
+  position: fixed;
+  z-index: 15;
+  bottom: 0;
+  height: 770px;
+  width: 100%;
+  transition: all 0.8s ease-in-out;
+  background-color: white;
+}
+@keyframes l3 {
+  to {
+    transform: rotate(1turn)
+  }
+}
+
+
+/* ===============>Home */
+.MyBG {
+  height: 110vh;
+  background-color: #ffff;
+
+}
+.HomeTitle {
+
+  font-size: 3.4rem;
+  font-weight: 800;
+  font-family: "Nunito", sans-serif;
+  background: linear-gradient(90deg, #1CB5E0 0%, #0562ba 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+
+}
+.MainParagraph {
+  font-size: 1.1rem;
+  color: #021817;
+  width: 70%;
+  margin: 10px auto 20px auto;
+
+}
+/* ========> register */
+.registerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+#MyRegisterObject {
+
+  width: 65%;
+  margin: 0;
+  z-index: 9;
+}
+.MyRegisterFormContainer {
+  padding-top: 5px;
+
+
+  background-color: white;
+
+  width: 35%;
+
+
+  z-index: 9;
+
+  border-radius: 15px;
+
+}
+/* ======>UserSettings */
+#UserSettingsContainer .card {
+  width: 80% ;
+  height: 100%;
+  margin: auto;
+}
+.page-wrapper {
+  width: 100%;
+  margin: auto;
+  padding: 40px 15px;
+}
+.edit-btn {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  background: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.settings-card {
+  border-radius: 20px;
+}
+.settings-card i {
+  margin-right: 9px;
+}
+.settings-card a {
+  text-decoration: none;
+
+}
+.settings-item {
+  padding: 15px;
+  transition: 0.2s;
+}
+.first-list,
+.last-list {
+  transition: 0.2s;
+}
+.middle-list{
+  transition: 0.2s;
+}
+.middle-list:hover{
+   border-radius: 20px ;
+  background-color: #f8f9fa;
+}
+.settings-item:hover {
+
+  background-color: #f8f9fa;
+}
+.first-list:hover {
+  border-radius: 20px 20px 0px 0px;
+  background-color: #f8f9fa;
+}
+.last-list:hover {
+  border-radius: 0px 0px 20px 20px;
+  background-color: #f8f9fa;
+}
+.icon-red {
+  color: #dc3545;
+}
+.logout:hover {
+  background-color: #ffe5e5 !important;
+}
+.btn-default-Btn2 {
+  display: block;
+  background-color: #0da39c !important;
+  color: white;
+  border-radius: 8px;
+  border-color: #1088bb;
+  transition: all 0.8s;
+  margin: 0px auto;
+
+
+}
+.btn-default-Btn2:hover {
+  font-size: 15px;
+  border-radius: 30px;
+  padding: 12px 9px;
+}
+
+
+
+/* =====ChangeUserPasswordImg ==> */
+#UploadImgInnerContainer{
+  width:35% !important;
+}
+.hiddenUploadimg {
+  display: none !important;
+}
+/* =====ChangeUserPassword ==> */
+.hiddenUserPassword{
+ display: none !important ;
+}
+#ChangeUserPassword #ChangeUserPasswordContainer .PassCard{
+
+  width: 80% !important;
+}
+#ChangeUserPassword #ChangeUserPasswordContainer .PassCard form{
+ 
+    width: 100% !important;
+}
+#ChangeUserPasswordContainer{
+  width: 30% !important;
+}
+
+
+/* =====ChangeUserInformation ==> */
+.ChangeUserInformations{
+ display: none !important ;
+}
+#ChangeUserInformations #ChangeUserInformationsContainer .InformationsCard{
+
+  width: 80% !important;
+}
+#ChangeUserInformations #ChangeUserInformationsContainer .InformationsCard form{
+ 
+    width: 100% !important;
+}
+#ChangeUserInformationsContainer{
+  width: 30% !important;
+}
+
+
+
+/* =====DeleteUserAcount==> */
+
+.animate__fadeOut{
+ display: none !important ;
+ transition: all !important;
+}
+#DeleteUserAccountTap #DeleteUserAccountContainer .DeleteAccountCard{
+
+  width: 80% !important;
+}
+#DeleteUserAccountTap #DeleteUserAccountContainer .DeleteAccountCard form{
+ 
+    width: 100% !important;
+}
+#DeleteUserAccountContainer{
+  width: 30% !important;
+}
+#DeleteUserTitle{
+  font-size: 0.9rem !important;
+  transform: scale(100%);
+
+}
+.btn-default-Btn-delete{
+  display: block;
+  background-color: #dc3545 !important;
+  color: white;
+  border-radius: 7px;
+  border-color: #dc3545;
+  transition: all 0.8s;
+  margin: 0px auto;
+}
+
+.btn-default-Btn-no{
+  display: block;
+  background-color: #1ab33e !important;
+  color: white;
+  border-radius: 7px;
+  border-color: #1ab33e;
+  transition: all 0.8s;
+  margin: 0px auto;
+}
+
+
+
+
+/* ========Alerts */
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+.custom-alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    min-width: 250px;
+    animation: slideInRight 0.5s ease-out forwards; 
+}
+.fade-out-effect {
+    animation: fadeOut 0.5s ease-out forwards; 
+}
+
+
+
+
+@media screen and (max-width: 350px) {
+
+/* ====>Home */
+  .MyBG {
+
+    height: 120vh;
+  }
+  .HomeTitle {
+    font-size: 1.9rem !important;
+    margin-bottom: 2px !important;
+  }
+  .MainParagraph {
+    font-size: 0.8rem !important;
+    margin-bottom: 25px !important;
+  }
+  .MainBtnGroup a {
+    width: 60%;
+    margin-bottom: 17px;
+    padding: 5px 1px !important;
+  }
+/* ======> register */
+  #MyRegisterObject {
+    display: none;
+  }
+  .MyRegisterFormCenter {
+
+    border-bottom: none !important;
+  }
+  .MyRegisterFormContainer {
+    padding-top: 5px;
+    background-color: white;
+    position: absolute;
+    width: 95% !important;
+    height: 71% !important;
+    top: 30px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 9;
+
+    border-radius: 15px;
+
+  }
+  .MyRegisterFormContainer #MyRegisterForm p {
+    font-size: 14px;
+    margin-bottom: 1px;
+
+  }
+  #MyBtn {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .LinksContainer .GoHomeBtn,
+  .LinksContainer .HaveAccountBtn {
+    display: none;
+  }
+
+/* ======>UserSettings */
+#UserSettingsContainer{
+  padding-top:6px !important;
+
+}
+.page-wrapper {
+  width: 100%;
+  margin: auto;
+  padding: 40px 15px;
+}
+#UserSettingsContainer h3{
+  margin-bottom: -50px !important;
+}
+#UserSettingsContainer .card{
+  width: 100%;
+}
+#UserSettingsContainer .card span{
+  font-size: 15px !important;
+  margin-top: 2px;
+}
+.edit-btn {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  background: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.settings-card {
+  border-radius: 20px;
+}
+.settings-card i {
+  margin-right: 9px;
+}
+.settings-card a {
+  text-decoration: none;
+
+}
+.settings-item {
+  padding: 15px;
+  transition: 0.2s;
+}
+.first-list,
+.last-list {
+  transition: 0.2s;
+}
+.settings-item:hover {
+
+  background-color: #f8f9fa;
+}
+.first-list:hover {
+  border-radius: 20px 20px 0px 0px;
+  background-color: #f8f9fa;
+}
+.last-list:hover {
+  border-radius: 0px 0px 20px 20px;
+  background-color: #f8f9fa;
+}
+.icon-red {
+  color: #dc3545;
+}
+.logout:hover {
+  background-color: #ffe5e5 !important;
+}
+.btn-default-Btn2 {
+  display: block;
+  background-color: #0da39c !important;
+  color: white;
+  border-radius: 8px;
+  border-color: #1088bb;
+  transition: all 0.8s;
+  margin: 0px auto;
+
+
+}
+.btn-default-Btn2:hover {
+  font-size: 15px;
+  border-radius: 30px;
+  padding: 12px 9px;
+}
+/* =====ChangeUserImg ==> */
+#UploadImgInnerContainer{
+  width: 90% !important;
+}
+.hiddenUploadimg {
+  display: none !important;
+}
+
+
+/* =====ChangeUserPassword ==> */
+#ChangeUserPasswordContainer{
+  width: 90% !important;
+}
+/* =====ChangeUserInformation ==> */
+#ChangeUserInformationsContainer{
+  width: 90% !important;
+}
+/* =====DeleteUserAccount ==> */
+#DeleteUserTitle{
+  font-size: 0.6rem !important;
+  transform: scale(120%);
+}
+#DeleteUserAccountContainer{
+  width: 90% !important;
+}
+
+
+
+
+}
+@media screen and (min-width: 351px) and (max-width: 768px) {
+
+/* ====>Home */
+  .MyBG {
+
+    height: 140vh;
+    top: -60px !important;
+  }
+  .HomeTitle {
+
+    font-size: 2.4rem;
+    font-weight: 800;
+
+
+  }
+  .MainParagraph {
+    font-size: 1rem;
+
+    margin-bottom: 55px;
+  }
+  .MainBtnGroup a {
+    margin-bottom: 17px;
+  }
+/* ======> register */
+  .registerContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+  }
+  #MyRegisterObject {
+    position: absolute;
+    width: 100% !important;
+    height: 58% !important;
+    z-index: 9;
+  }
+  .MyRegisterFormContainer #MyRegisterForm p {
+    font-size: 14px;
+    margin-bottom: 1px;
+
+  }
+  .MyRegisterFormCenter {
+    padding-bottom: 20px;
+    border-bottom: none !important;
+  }
+  .MyRegisterFormContainer {
+    padding-top: 5px;
+
+
+    background-color: white;
+    position: absolute;
+    width: 100% !important;
+    height: auto !important;
+    bottom: 0;
+    z-index: 9;
+
+    border-radius: 15px;
+
+  }
+  #MyBtn {
+    margin-top: 0;
+  }
+  .LinksContainer .GoHomeBtn,
+  .LinksContainer .HaveAccountBtn {
+    display: none;
+  }
+/* ======>UserSettings */
+.page-wrapper {
+  width: 100%;
+  margin: auto;
+  padding: 40px 15px;
+}
+#UserSettingsContainer .card{
+  width: 100%;
+}
+.edit-btn {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  background: white;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.settings-card {
+  border-radius: 20px;
+}
+.settings-card i {
+  margin-right: 9px;
+}
+.settings-card a {
+  text-decoration: none;
+
+}
+.settings-item {
+  padding: 15px;
+  transition: 0.2s;
+}
+.first-list,
+.last-list {
+  transition: 0.2s;
+}
+.settings-item:hover {
+
+  background-color: #f8f9fa;
+}
+.first-list:hover {
+  border-radius: 20px 20px 0px 0px;
+  background-color: #f8f9fa;
+}
+.last-list:hover {
+  border-radius: 0px 0px 20px 20px;
+  background-color: #f8f9fa;
+}
+.icon-red {
+  color: #dc3545;
+}
+.logout:hover {
+  background-color: #ffe5e5 !important;
+}
+.btn-default-Btn2 {
+  display: block;
+  background-color: #0da39c !important;
+  color: white;
+  border-radius: 8px;
+  border-color: #1088bb;
+  transition: all 0.8s;
+  margin: 0px auto;
+
+
+}
+.btn-default-Btn2:hover {
+  font-size: 15px;
+  border-radius: 30px;
+  padding: 12px 9px;
+}
+/* =====ChangeUserImg ==> */
+#UploadImgInnerContainer {
+  width: 80% !important;
+}
+/* =====ChangeUserPassword ==> */
+#ChangeUserPasswordContainer{
+  width: 80% !important;
+}
+/* =====ChangeUserInformation ==> */
+#ChangeUserInformationsContainer{
+  width: 80% !important;
+}
+/* =====DeleteUserAccount ==> */
+#DeleteUserTitle{
+  font-size: 0.7rem !important;
+  
+
+}
+#BtnDeleteAccountGroup button{
+  margin-top: 8px !important;
+}
+#DeleteUserAccountContainer{
+  width: 85% !important;
+}
+
+
+}
+@media screen and (min-width: 769px) and (max-width: 1266px){
+/* =====ChangeUserImg ==> */
+#UploadImgInnerContainer{
+  width:55% !important;
+}
+/* =====ChangeUserPassword ==> */
+#ChangeUserPasswordContainer{
+  width: 50% !important;
+}
+/* =====ChangeUserInformation ==> */
+#ChangeUserInformationsContainer{
+  width: 50% !important;
+}
+/* =====DeleteUserAccount ==> */
+#DeleteUserTitle{
+  font-size: 0.9rem !important;
+  transform: scale(105%);
+
+}
+#DeleteUserAccountContainer{
+  width: 50% !important;
+}
+
+}
