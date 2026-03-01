@@ -121,10 +121,10 @@ export const handleLogin = async (req, res, next) => {
 };
 //view Function
 export const login = (req, res, next) => {
+
   if (req.session.loggedIn) {
     return res.redirect("/massage");
   }
-
 
   res.render("login.ejs");
 };
@@ -154,7 +154,7 @@ export const ChangeUserData = async (req, res, next) => {
 
 
     res.render("UserSettings.ejs", {
- 
+      session: req.session, 
       user: user,
       userName: user.name,
       userImg: user.profileImg,

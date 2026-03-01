@@ -2,13 +2,20 @@
 <html lang="en">
 
 <head>
+    <!-- Required Meta Tags -->
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Title -->
     <title>Sarahah</title>
-    <link rel="shortcut icon" href="img/favicon-32x32.png" type="image/x-icon">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon-32x32.png" type="image/x-icon">
+    <!-- Font Awesome -->
+    <link   rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"  >
+    <!-- Bootstrap CSS -->
+    <link  href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <!-- Custom CSS (Always Last to Override Bootstrap) -->
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 
 <body>
@@ -20,6 +27,10 @@
         <div class="loader"></div>
         <div class="LoaderConatinerBefore"></div>
 </div>
+
+
+
+
 <% if (error && error.length> 0) { %>
 <div class="alert alert-danger custom-alert" id="auto-close-alert">
             <%= error[0] %>
@@ -38,16 +49,63 @@
 <nav class="navbar navbar-expand-lg bg-custom navbar-dark bg-dark ">
     <div class="container">
         <a class="navbar-brand" href="/massage"><img src="img/logo300.png" width="54" alt=""> </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
- Menu <span class="navbar-toggler-icon"></span>
-</button>
+        <div style="width: 30%;" class="  "  >
+        <ul id="Phonelist" class="navbar-nav ms-auto  w-100 d-flex flex-row position-relative">
+                
+            <li class="nav-item dropdown " style="margin-right: 20px; margin-top: 2px;" id="notification-dropdown">
+               <a class="nav-link position-relative  " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <input type="hidden" id="userId-hidden" value="<%= session.userId %>">
+                <i style="margin-right: 2px;" class="fas fa-bell"></i>
+                <span id="notification-badge" class="position-absolute top-25 start-100 translate-middle badge rounded-pill bg-danger ">
+                    0
+                </span>
+               </a>
+               <ul style="right: -105px; width: 390px !important; top: 45px;" class="dropdown-menu dropdown-menu-end position-absolute animate__animated   animate__fadeInDown" aria-labelledby="navbarDropdown" id="notification-list" style="width: 300px; max-height: 400px; overflow-y: auto; margin-left: -150px; margin-top: 7px;  ">
+                   <li><h6 class="dropdown-header">notification</h6></li>
+                   <div id="notifications-container">
+                   </div>
+                   <li><hr class="dropdown-divider"></li>
+                   <li><a class="dropdown-item text-center small text-primary" href="/massage">See all Messages</a></li>
+               </ul>
+            </li>
+
+
+
+
+
+             
+                <li class="nav-item">
+                    <a class="nav-link" href="/ChangeUserData">Settings</a>
+                </li>
+            
+       </ul>
+    </div>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ml-auto ">
-
-                <li class="nav-item">
-                    <a class="nav-link" href="/massage">Messages</a>
+            <ul class="navbar-nav ms-auto ">
+                
+               <li class="nav-item dropdown " style="margin-right: 20px; margin-top: 2px;" id="notification-dropdown">
+               <a class="nav-link position-relative  " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <input type="hidden" id="userId-hidden" value="<%= session.userId %>">
+                <i style="margin-right: 2px;" class="fas fa-bell"></i>
+                <span id="notification-badge" class="position-absolute top-25 start-100 translate-middle badge rounded-pill bg-danger ">
+                    0
+                </span>
+               </a>
+               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" id="notification-list" style="width: 300px; max-height: 400px; overflow-y: auto; margin-left: -150px; margin-top: 7px; ">
+                   <li><h6 class="dropdown-header">notification</h6></li>
+                   <div id="notifications-container">
+                   </div>
+                   <li><hr class="dropdown-divider"></li>
+                   <li><a class="dropdown-item text-center small text-primary" href="/massage">See all Messages</a></li>
+               </ul>
                 </li>
+
+
+
+
+
+             
                 <li class="nav-item">
                     <a class="nav-link" href="/ChangeUserData">Settings</a>
                 </li>
@@ -68,31 +126,37 @@
             <% } %>
         </a>
         <h3 class="py-2"><%= session.userName %></h3>
-        <button data-toggle="modal" data-target="#share" class="btn btn-default-outline share "><i class="fas fa-share-alt"></i>  Share Profile</button>
+        <button    data-bs-toggle="modal"  data-bs-target="#share" id="OpenShareTap"   class="btn mybtn-default-outline"><i class="fas fa-share-alt"></i>  Share Profile</button>
     </div>
 </div>
 
 
 <!--  Share profile Modal -->
-<div class="modal fade" id="share" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Share Profile</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-            </div>
-            <div class="modal-body">
-                
-             <a target="_blank" href="<%= link %>"><%= link %></a>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
+<div class="modal fade" id="share" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Share Profile</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body text-center">
+        <a target="_blank" href="<%= link %>" class="text-primary fw-bold">
+          <%= link %>
+        </a>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+      </div>
+
     </div>
+  </div>
 </div>
+
 <!-- /modal -->
 
 
@@ -120,6 +184,7 @@
     </div>
  
 </div>
+
 
 
 

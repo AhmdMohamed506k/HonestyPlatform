@@ -1,80 +1,40 @@
 const loader = document.querySelector(".loader");
 const loaderAfter = document.querySelector(".LoaderConatinerAfter");
 const loaderBefore = document.querySelector(".LoaderConatinerBefore");
-const PhoneBtn = document.querySelector("#PhoneBtn");
 const navbar = document.querySelector("#myNav");
-const MainBtnGroup = document.querySelector("#MainBtnGroup");
-const RegisterForm = document.querySelector("#MyRegisterForm");
-const MyRegister3DObject = document.querySelector("#MyRegisterObject");
 
 
-//== Change User Image ==
-const changeUserImgAvatar = document.querySelector("#changeUserImgAvatar"); //img Id
-const changeUserImgAvatarPenIcon = document.querySelector("#changeUserImgAvatarPenIcon"); // PEN ID
-
-const UploadImgTaP = document.querySelector("#UploadImgContainer");// Upload Img TaP
-const UploadImgInnerContainer = document.querySelector("#UploadImgInnerContainer"); ///Upload Img TaP inner card
-const ChangeUserProfileIMGCloseTapIcon = document.querySelector("#ChangeUserProfileIMGCloseTapIcon");
-
-//== Change User Passwrod ==
-const OpenChangePassTap = document.querySelector("#OpenChangePassTap");
-const ChangeUserPasswordTap = document.querySelector("#ChangeUserPassword");
-const ChangeUserPasswordContainer = document.querySelector("#ChangeUserPasswordContainer");
-const ChangeUserPasswordCloseTapIcon = document.querySelector("#ChangeUserPasswordCloseTapIcon");
-//-------------
-const mySlashEyePass = document.querySelector("#mySlashEyePassInput1");
-const oldPasswordInput = document.querySelector("#oldPasswordInput");
-const mySlashEyePass2 = document.querySelector("#mySlashEyePassInput2");
-const NewUSerPasswordInput = document.querySelector("#NewUSerPasswordInput");
-const mySlashEyePass3 = document.querySelector("#mySlashEyePassInput3");
-const PasswordConfirmationInput = document.querySelector("#PasswordConfirmationInput");
-// ============//
-
-
-
-
-// == Change user Informations ==
-const OpenChangeInfoTap = document.querySelector("#OpenChangeInfoTap"); // to open the tab
-const ChangeUserInformations = document.querySelector("#ChangeUserInformations") // the Tab
-const ChangeUserInformationsContainer = document.querySelector("#ChangeUserInformationsContainer") //the card that inside the tap
-const ChangeUserInfoCloseTapIcon = document.querySelector("#ChangeUserInfoCloseTapIcon") 
-// ============//
-// == Delete user Account ==
-const OpenDeleteAccountTap = document.querySelector("#OpenDeleteAccountTap");
-const DeleteUserAccountTap = document.querySelector("#DeleteUserAccountTap");
-const DeleteUserAccountContainer = document.querySelector("#DeleteUserAccountContainer");
-const closeTapIcon = document.querySelector("#closeTapIcon");
-const GoBackBtn = document.querySelector("#GoBackBtn");
-
-
-//alerts
 const alertBox = document.getElementById('auto-close-alert');
+const hiddenInput = document.getElementById('userId-hidden');
+const userId = hiddenInput ? hiddenInput.value : null;
+var notificationsBox=[{}]
+const socket = io();
 
 
 
 
 
 
-var flag=true;
+
 
 // Hero section animation generate 
 async function AnimatedPages(params) {
-   if(flag == false && MainBtnGroup != undefined && RegisterForm == undefined){
+   if(flag == false && document.querySelector("#MainBtnGroup") != undefined && document.querySelector("#MyRegisterForm") == undefined){
     setTimeout(() => {
       
     
     navbar.classList.add("animate__animated","animate__fadeInDown")
-    MainBtnGroup.classList.add("animate__animated","animate__fadeIn")
+    document.querySelector("#MainBtnGroup").classList.add("animate__animated","animate__fadeIn")
     flag = true
     
     }, 500);
     
-  }else if(flag == false && RegisterForm != undefined && MainBtnGroup == undefined){
+  }else if(flag == false && document.querySelector("#MyRegisterForm") != undefined && document.querySelector("#MainBtnGroup") == undefined){
 
     setTimeout(()=>{
    
     navbar.classList.add("animate__animated","animate__fadeInDown")
-    RegisterForm.classList.add("animate__animated","animate__fadeInRight");
+    document.querySelector("#MyRegisterForm").classList.add("animate__animated","animate__fadeInRight");
 
  
     flag =true
@@ -117,238 +77,150 @@ window.addEventListener("DOMContentLoaded", async function() {
   
 
 });
-//====
 
 
 
 
 
-// Change User ProfileImage
-changeUserImgAvatar.addEventListener("click",function OpenChangeProfileImgTap(){
-  UploadImgInnerContainer.classList.replace("animate__fadeOutDown","animate__fadeInUp");
-  UploadImgTaP.classList.replace("animate__fadeOut","animate__fadeIn");
-})
-changeUserImgAvatarPenIcon?.addEventListener("click",()=>{
-
-  UploadImgContainer?.classList?.remove("hiddenUploadimg")
-})
-ChangeUserProfileIMGCloseTapIcon.addEventListener("click",(e)=>{
-
-  
-  if (e.target.id == "ChangeUserProfileIMGCloseTapIcon" && UploadImgTaP?.classList[6] == "animate__fadeIn") {
-        
-  UploadImgInnerContainer?.classList.replace("animate__fadeInUp","animate__fadeOutDown");
-     
-  setTimeout(() => {
-    UploadImgTaP?.classList.replace("animate__fadeIn" ,"animate__fadeOut");
-  }, 800);
- 
-  }else{
-   OpenChangeProfileImgTap()
-  }
-})
-//======
-
-
-
-
-
-
-// Change User Password
-OpenChangePassTap.addEventListener("click",function OpenChangePassTab(){
+if (userId && userId !== "undefined") {
+    socket.emit('join', userId);
+    console.log("✅ Joined room:", userId);
+}
+function timeAgo(date) {
+    const seconds = Math.floor((new Date() - new Date(date)) / 1000);
     
-  ChangeUserPasswordContainer.classList.replace("animate__fadeOutDown","animate__fadeInUp");
-  ChangeUserPasswordTap.classList.replace("animate__fadeOut","animate__fadeIn");
-})
-ChangeUserPasswordCloseTapIcon.addEventListener("click",(e)=>{
+   
+    const intervals = {
+        year: 31536000,
+        month: 2592000,
+        week: 604800,
+        day: 86400,
+        hour: 3600,
+        minute: 60
+    };
 
-
-  if (e.target.id == "ChangeUserPasswordCloseTapIcon" && ChangeUserPasswordTap?.classList[6] == "animate__fadeIn") {
-        
-
+ 
+    for (let unit in intervals) {
+        const value = Math.floor(seconds / intervals[unit]);
+        if (value >= 1) { 
+            return `${value} ${unit}${value > 1 ? 's' : ''} ago`;
+        }
+    }
     
-  ChangeUserPasswordContainer?.classList.replace("animate__fadeInUp","animate__fadeOutDown");
-     
-  setTimeout(() => {
-    ChangeUserPasswordTap?.classList.replace("animate__fadeIn" ,"animate__fadeOut");
-  }, 800);
- 
-  }else{
-   ChangeUserPasswordContainer()
-  }
-})
-mySlashEyePass.addEventListener("click",()=>{
-   
-   
-   if(mySlashEyePass.classList[1] == "fa-eye-slash"){
-   mySlashEyePass.classList.replace("fa-eye-slash","fa-eye" );
-   oldPasswordInput.type = "text"
-
-   
-   }else{
-      mySlashEyePass.classList.replace("fa-eye","fa-eye-slash" )
-      oldPasswordInput.type = "password"
-
-   }
-  
-   
-   
-
-})
-mySlashEyePass2.addEventListener("click",()=>{
-   
-   
-  if(mySlashEyePass2.classList[1] == "fa-eye-slash"){
-   mySlashEyePass2.classList.replace("fa-eye-slash","fa-eye" );
-   NewUSerPasswordInput.type = "text"
-
-   
-  }else{
-    mySlashEyePass2.classList.replace("fa-eye","fa-eye-slash" )
-    NewUSerPasswordInput.type = "password"
-
-  }
-  
-   
-   
-
-})
-mySlashEyePass3.addEventListener("click",()=>{
-   
-   
-  if(mySlashEyePass3.classList[1] == "fa-eye-slash"){
-   mySlashEyePass3.classList.replace("fa-eye-slash","fa-eye" );
-   PasswordConfirmationInput.type = "text"
-
-   
-  }else{
-    mySlashEyePass3.classList.replace("fa-eye","fa-eye-slash" )
-    PasswordConfirmationInput.type = "password"
-
-  }
-  
-   
-   
-
-})
-//Change user Informations
-OpenChangeInfoTap.addEventListener("click" ,function openUserInfoTap(){
-
-  ChangeUserInformationsContainer.classList.replace("animate__fadeOutDown","animate__fadeInUp");
-  ChangeUserInformations.classList.replace("animate__fadeOut","animate__fadeIn");
-
-})
-ChangeUserInfoCloseTapIcon.addEventListener("click",function closeUserInfoTap(e){
+    return "Just now";
+}
 
 
-     
-  if (e.target.id == "ChangeUserInfoCloseTapIcon" && ChangeUserInformations?.classList[6] == "animate__fadeIn") {
-        
+socket.on('new_message', (data) => {
 
+    let count = JSON.parse(localStorage.getItem("notification")) || 0;
+    count++;
+    localStorage.setItem("notification", JSON.stringify(count));
+
+
+    SetNotificationUI();
+    addNotificationToList();
+
+
+    new Audio('/sounds/notification.mp3').play().catch(() => {});
+});
+
+function SetNotificationUI() {
+    const notificationNumIcon = document.querySelector("#notification-badge");
+    const count = JSON.parse(localStorage.getItem("notification")) || 0;
     
-  ChangeUserInformationsContainer?.classList.replace("animate__fadeInUp","animate__fadeOutDown");
+    notificationNumIcon.innerHTML = count;
+}
+
+
+
+async function addNotificationToList() {
+    const container = document.getElementById('notifications-container');
+ 
      
-  setTimeout(() => {
-    ChangeUserInformations?.classList.replace("animate__fadeIn" ,"animate__fadeOut");
-  }, 800);
- 
-  }else{
-   openUserInfoTap()
-  }
-})
-//Delete user Account
-OpenDeleteAccountTap.addEventListener("click" ,function OpenDeleteTap() {
-  
-  DeleteUserAccountContainer.classList.replace("animate__fadeOutDown","animate__fadeInUp");
-  DeleteUserAccountTap.classList.replace("animate__fadeOut","animate__fadeIn");
-  
-})
-closeTapIcon.addEventListener("click",(e)=>{
-         
- 
-  
-
-  if (e.target.id == "closeTapIcon"  && DeleteUserAccountTap?.classList[6] == "animate__fadeIn") {
-      
-
-    DeleteUserAccountContainer.classList.replace("animate__fadeInUp","animate__fadeOutDown");
-     
-  setTimeout(() => {
-    DeleteUserAccountTap.classList.replace("animate__fadeIn" ,"animate__fadeOut");
-  }, 800);
- 
-  }else{
-    OpenDeleteTap()
-  }
-
-
-   
-  
-
-})
-GoBackBtn.addEventListener("click",(e)=>{
-         
- 
-  
-
-  if (e.target.id == "GoBackBtn"  && DeleteUserAccountTap?.classList[6] == "animate__fadeIn") {
-      
-
-    DeleteUserAccountContainer.classList.replace("animate__fadeInUp","animate__fadeOutDown");
-     
-  setTimeout(() => {
-    DeleteUserAccountTap.classList.replace("animate__fadeIn" ,"animate__fadeOut");
-  }, 800);
- 
-  }else{
-    OpenDeleteTap()
-  }
-
-
-   
-  
-
-})
-
-
-// ============================================================
-// to close popup taps
-document?.addEventListener("click",(e)=>{
-
-
-  
-  if(e.target.id == "DeleteUserAccountTap"){
-   
-
-  DeleteUserAccountContainer.classList.replace("animate__fadeInUp","animate__fadeOutDown");
-  setTimeout(() => {
-    DeleteUserAccountTap.classList.replace("animate__fadeIn" ,"animate__fadeOut");
-  }, 800);
-
-
-  }else if(e.target.id == "ChangeUserInformations"){
-
-
-  ChangeUserInformationsContainer?.classList.replace("animate__fadeInUp","animate__fadeOutDown");
-  setTimeout(() => {
-    ChangeUserInformations?.classList.replace("animate__fadeIn" ,"animate__fadeOut");
-  }, 800);
-
-  
-  }else if(e.target.id === "ChangeUserPassword"){
+    try {
+        const response = await fetch("/UserNotifications");
+        const data = await response.json();
+        console.log("==>",data);
         
-  ChangeUserPasswordContainer?.classList.replace("animate__fadeInUp","animate__fadeOutDown");
-     
-  setTimeout(() => {
-    ChangeUserPasswordTap?.classList.replace("animate__fadeIn" ,"animate__fadeOut");
-  }, 800);
-  }else if(e.target.id === "UploadImgContainer"){     
-  UploadImgInnerContainer?.classList.replace("animate__fadeInUp","animate__fadeOutDown"); 
-  setTimeout(() => {
-    UploadImgTaP?.classList.replace("animate__fadeIn" ,"animate__fadeOut");
-  }, 800);
- 
-  }
+        
+        if (data.status == "Success" ) {
    
 
-})
+            const display = data.notifications.map((notice) => {
+                const time = new Date(notice.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                
+    
+const relativeTime = timeAgo(notice.createdAt); 
+const isRead = notice.isRead;
+const badgeHtml = !isRead ? `<span class="badge bg-info p-1" style="font-size: 0.6rem;">New</span>` : '';
+
+return `
+    <li>
+        <a class="dropdown-item d-flex align-items-center py-3 border-bottom" href="/massage" 
+           style="white-space: normal; background-color: ${isRead ? '#ffffff' : '#f8f9fa'};">
+            <div class="me-3">
+                <div class="icon-circle ${isRead ? 'bg-secondary' : 'bg-primary'} text-white p-2 rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                    <i class="fas fa-envelope"></i>
+                </div>
+            </div>
+            <div class="w-100">
+                <div class="d-flex justify-content-between align-items-center mb-1">
+                    <span class="small text-muted">${relativeTime}</span>
+                    ${badgeHtml}
+                </div>
+                <p class="mb-0 text-dark" style="font-size: 0.9rem; font-weight: ${isRead ? '400' : '700'};">
+                    ${notice.content}
+                </p>
+            </div>
+        </a>
+    </li>`;
+            }).join(''); 
+            
+            container.innerHTML = display || '<li><p class="text-center p-2">Sorry there are no notifications /p></li>';
+        }
+    } catch (err) {
+        console.error("Failed to fetch notifications:", err);
+    }
+}
+addNotificationToList()
+
+
+document.getElementById('navbarDropdown').addEventListener('click', async () => {
+
+    localStorage.setItem("notification", "0");
+    SetNotificationUI();
+
+  
+    await fetch('/UserNotifications/mark-as-read', { method: 'POST' });
+
+    setTimeout(() => {
+        addNotificationToList();
+    }, 9000); 
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

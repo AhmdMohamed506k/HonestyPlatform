@@ -18,6 +18,22 @@ body {
 .nav-link {
   color: #fff !important;
 }
+#OpenShareTap{
+  
+  color: #0da39c ;
+  background-color: transparent;
+  border-color: #10BBB3;
+  width: 200px;
+  margin: 0 auto;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  transition: all 1s;
+}
+#OpenShareTap:hover{
+  color: white;
+ background-color:#10BBB3 ;
+ border-radius:25px ;
+}
 
 .MainBtnGroup .mybtn-default-outline {
 
@@ -521,7 +537,9 @@ body {
     animation: fadeOut 0.5s ease-out forwards; 
 }
 
-
+#Phonelist{
+  display: none !important; 
+}
 
 
 @media screen and (max-width: 350px) {
@@ -691,6 +709,9 @@ body {
   width: 90% !important;
 }
 
+#Phonelist{
+  display: flex !important; 
+}
 
 
 
@@ -860,6 +881,9 @@ body {
 }
 
 
+#Phonelist{
+  display: flex !important; 
+}
 }
 @media screen and (min-width: 769px) and (max-width: 1266px){
 /* =====ChangeUserImg ==> */

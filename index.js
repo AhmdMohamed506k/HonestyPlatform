@@ -8,9 +8,10 @@ import connectionDB from "./db/connectionDB.js";
 import flash from "connect-flash"
 import {connectRedis ,redisClient} from "./src/utils/Redis/Redisconfig.js";
 import { RedisStore } from "connect-redis";
+import NotificationsRouter from "./src/modules/Notifications/Notifications.routes.js";
 
 const app = express();
-const port = 4000;
+const port = 3000;
 
 const httpServer = createServer(app);
 initSocket(httpServer);
@@ -49,6 +50,7 @@ app.use((req, res, next) => {
 
 
 app.use(userRouter);
+app.use(NotificationsRouter);
 app.use(messageRouter);
 
 
@@ -58,9 +60,6 @@ connectRedis()
 
 
 
-httpServer.listen(3000, () => {
- console.log(' Server is running on port 3000');
+httpServer.listen(port, () => {
+    console.log(`🚀 Server is running on port ${port}`);
 });
-app.listen(port, () =>
- console.log(`Server is running on port ${port}!`
-));

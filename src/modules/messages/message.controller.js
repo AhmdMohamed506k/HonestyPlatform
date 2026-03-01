@@ -1,7 +1,12 @@
 
 import userModel from '../../../db/models/user.model.js';
 import messageModel from '../../../db/models/message.model.js';
+import notificationModel from '../../../db/models/Notification.model.js';
 import { redisClient } from '../../utils/Redis/Redisconfig.js';
+import { getIO } from '../../utils/SocketIO/socketIoConfig.js';
+
+
+
 
 export const message = async (req, res, next) => {
     try {
@@ -15,6 +20,8 @@ export const message = async (req, res, next) => {
         
           
         const cachedMessages = await redisClient.get(cacheKey);
+         console.log(cacheKey);
+         
         let messages;
 
         if (cachedMessages) {
@@ -51,15 +58,31 @@ export const sendMesg = async (req, res, next) => {
     try {
         const receiverId = req.params.id;
         const messageContent = req.body.masg;
-
+        
         
         await messageModel.create({ contant: messageContent, userId: receiverId });
 
     
-        await redisClient.del(`user:messages:${receiverId}`);
 
-    
+        
+       await notificationModel.create({
+            recipient: receiverId,
+            content: "You got a new Message ! 🤫"
+        });
+
+   
+        const io = getIO();
+        io.to(receiverId).emit('new_message',{ 
+            message: "You got a new Message! 🤫" 
+        });
+
+
+
+
+        await redisClient.del(`user:messages:${receiverId}`);
         res.redirect(`/user/${receiverId}`);
+
+
         
     } catch (error) {
         console.log("Error sending message:", error);
