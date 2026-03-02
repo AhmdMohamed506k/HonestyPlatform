@@ -16,17 +16,17 @@ export const message = async (req, res, next) => {
         const userId = req.session.userId;
         const cacheKey = `user:messages:${userId}`;
 
-      
+     
         
           
         const cachedMessages = await redisClient.get(cacheKey);
-         console.log(cacheKey);
+         
          
         let messages;
 
         if (cachedMessages) {
             messages = JSON.parse(cachedMessages);
-         
+             
         } else {
           
             messages = await messageModel.find({ userId }).sort({ createdAt: -1 });
@@ -38,11 +38,17 @@ export const message = async (req, res, next) => {
        
         const user = await userModel.findOne({_id:userId});
         const url = `${req.protocol}://${req.headers.host}/user/${userId}`;
+  
+
+  
+         console.log(messages);
+
 
         res.render("massage.ejs", { 
             session: req.session, 
             link: url, 
             massage: messages, 
+            massageLength: messages.length, 
             user, 
             userImg: user.profileImg 
         });

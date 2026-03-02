@@ -2,7 +2,7 @@
 
 body {
   background-color: #f5f8fa;
-  overflow: hidden !important;
+
   font-family: "Nunito", sans-serif;
 
 }
@@ -537,9 +537,61 @@ body {
     animation: fadeOut 0.5s ease-out forwards; 
 }
 
-#Phonelist{
-  display: none !important; 
+
+/* ===> Messagas */
+.message-card {
+    background: #f8f9fa;
+    border-radius: 10px;
+    width: 100%;
+    padding: 20px;
+    position: relative;
+    border: 1px solid #eee;
+    margin-bottom: 20px;
 }
+.ActiveMessageTap{
+  background-color: #1CB5E0 ;
+}
+
+.message-text {
+    font-size: 1.1rem;
+    color: #333;
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    margin: 15px 0;
+}
+
+.user-avatar-container {
+    position: absolute;
+    right: -25px;
+    top: 20px;
+    background: #343a40;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border: 3px solid white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.fav-star {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    color: #ccc;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.fav-star.active { color: #ffc107; }
+
+
+
+
 
 
 @media screen and (max-width: 350px) {
@@ -709,10 +761,41 @@ body {
   width: 90% !important;
 }
 
-#Phonelist{
-  display: flex !important; 
+
+ /* Notifications */
+ .MyCustomNavCollapse .mainNotificationUL{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+ }
+  #notification-list{
+    position: absolute;
+    left: -50px;
+    right: 0;
+  }
+
+
+
+
+#MessageTitleContainer .card{
+  width: 100% !important;
+}
+#MessageContainer{
+  width:93% !important;
 }
 
+#MessageImgAvater{
+ 
+   width: 10% !important;
+   margin-right: auto;
+}
+#IconHolder{
+   border: 1px darkorchid solid;
+  display: none;
+}
+#MessageCard{
+  width: 90% !important;
+}
 
 
 }
@@ -881,9 +964,18 @@ body {
 }
 
 
-#Phonelist{
-  display: flex !important; 
-}
+ /* Notifications */
+ .MyCustomNavCollapse .mainNotificationUL{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+ }
+  #notification-list{
+    position: absolute;
+    left: -50px;
+    right: 0;
+  }
+
 }
 @media screen and (min-width: 769px) and (max-width: 1266px){
 /* =====ChangeUserImg ==> */
@@ -907,5 +999,19 @@ body {
 #DeleteUserAccountContainer{
   width: 50% !important;
 }
+
+
+ /* Notifications */
+ .MyCustomNavCollapse .mainNotificationUL{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+ }
+  #notification-list{
+    position: absolute;
+    left: -50px;
+    right: 0;
+  }
+
 
 }

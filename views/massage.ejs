@@ -8,13 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Title -->
     <title>Sarahah</title>
-    <!-- Favicon -->
+
     <link rel="shortcut icon" href="/img/favicon-32x32.png" type="image/x-icon">
-    <!-- Font Awesome -->
-    <link   rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"  >
-    <!-- Bootstrap CSS -->
-    <link  href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <!-- Custom CSS (Always Last to Override Bootstrap) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -22,174 +21,222 @@
 
 
 
-<div class="LoaderConatiner">
+    <div class="LoaderConatiner">
         <div class="LoaderConatinerAfter"></div>
         <div class="loader"></div>
         <div class="LoaderConatinerBefore"></div>
-</div>
+    </div>
 
 
 
 
-<% if (error && error.length> 0) { %>
-<div class="alert alert-danger custom-alert" id="auto-close-alert">
+    <% if (error && error.length> 0) { %>
+        <div class="alert alert-danger custom-alert" id="auto-close-alert">
             <%= error[0] %>
-</div>
-<% } %>
-<% if (success && success.length> 0) { %>
-<div class="alert alert-success custom-alert" id="auto-close-alert">
+        </div>
+        <% } %>
+            <% if (success && success.length> 0) { %>
+                <div class="alert alert-success custom-alert" id="auto-close-alert">
                     <%= success[0] %>
-</div>
-<% } %>
-
-
-
-
-<!-- /navbar -->
-<nav class="navbar navbar-expand-lg bg-custom navbar-dark bg-dark ">
-    <div class="container">
-        <a class="navbar-brand" href="/massage"><img src="img/logo300.png" width="54" alt=""> </a>
-        <div style="width: 30%;" class="  "  >
-        <ul id="Phonelist" class="navbar-nav ms-auto  w-100 d-flex flex-row position-relative">
-                
-            <li class="nav-item dropdown " style="margin-right: 20px; margin-top: 2px;" id="notification-dropdown">
-               <a class="nav-link position-relative  " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <input type="hidden" id="userId-hidden" value="<%= session.userId %>">
-                <i style="margin-right: 2px;" class="fas fa-bell"></i>
-                <span id="notification-badge" class="position-absolute top-25 start-100 translate-middle badge rounded-pill bg-danger ">
-                    0
-                </span>
-               </a>
-               <ul style="right: -105px; width: 390px !important; top: 45px;" class="dropdown-menu dropdown-menu-end position-absolute animate__animated   animate__fadeInDown" aria-labelledby="navbarDropdown" id="notification-list" style="width: 300px; max-height: 400px; overflow-y: auto; margin-left: -150px; margin-top: 7px;  ">
-                   <li><h6 class="dropdown-header">notification</h6></li>
-                   <div id="notifications-container">
-                   </div>
-                   <li><hr class="dropdown-divider"></li>
-                   <li><a class="dropdown-item text-center small text-primary" href="/massage">See all Messages</a></li>
-               </ul>
-            </li>
-
-
-
-
-
-             
-                <li class="nav-item">
-                    <a class="nav-link" href="/ChangeUserData">Settings</a>
-                </li>
-            
-       </ul>
-    </div>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto ">
-                
-               <li class="nav-item dropdown " style="margin-right: 20px; margin-top: 2px;" id="notification-dropdown">
-               <a class="nav-link position-relative  " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <input type="hidden" id="userId-hidden" value="<%= session.userId %>">
-                <i style="margin-right: 2px;" class="fas fa-bell"></i>
-                <span id="notification-badge" class="position-absolute top-25 start-100 translate-middle badge rounded-pill bg-danger ">
-                    0
-                </span>
-               </a>
-               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" id="notification-list" style="width: 300px; max-height: 400px; overflow-y: auto; margin-left: -150px; margin-top: 7px; ">
-                   <li><h6 class="dropdown-header">notification</h6></li>
-                   <div id="notifications-container">
-                   </div>
-                   <li><hr class="dropdown-divider"></li>
-                   <li><a class="dropdown-item text-center small text-primary" href="/massage">See all Messages</a></li>
-               </ul>
-                </li>
-
-
-
-
-
-             
-                <li class="nav-item">
-                    <a class="nav-link" href="/ChangeUserData">Settings</a>
-                </li>
-            
-            </ul>
-        </div>
-    </div>
-</nav>
-
-
-<div class="container text-center py-5 my-5 text-center">
-    <div class="card pt-5">
-        <a href="" data-toggle="modal" data-target="#profile">
-            <% if(userImg.public_id && userImg.secure_url){ %>
-              <img src="<%= userImg.secure_url %>" class="avatar  " style="border: #1CB5E0 solid 3px; border-radius: 100px;" alt="">
-            <% } else { %>
-                <img src="img/avatar.png" class="avatar  " style="border: #1CB5E0 solid 3px; border-radius: 100px;" alt="">
-            <% } %>
-        </a>
-        <h3 class="py-2"><%= session.userName %></h3>
-        <button    data-bs-toggle="modal"  data-bs-target="#share" id="OpenShareTap"   class="btn mybtn-default-outline"><i class="fas fa-share-alt"></i>  Share Profile</button>
-    </div>
-</div>
-
-
-<!--  Share profile Modal -->
-<div class="modal fade" id="share" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <div class="modal-header">
-        <h5 class="modal-title">Share Profile</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-
-      <div class="modal-body text-center">
-        <a target="_blank" href="<%= link %>" class="text-primary fw-bold">
-          <%= link %>
-        </a>
-      </div>
-
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
-        </button>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- /modal -->
-
-
-
-<!-- =================messages=================== -->
-<div class="container text-center my-5 text-center">
-    <div class="row">
-        <% for( let i = 0; i < massage.length; i++ ) { %>
-        <div class="col-md-12">
-            <div class="card py-5">
-                <% if (massage.length) { %>
-                    <p> <%= massage[i].contant %></p>
+                </div>
                 <% } %>
-            </div>
-        </div>
-        <% } %>
 
-        
-        <% for( let index = 0; index == massage.length; index++ ) { %>
-            <div class="col-md-12"> 
-                <div class="card py-5">
-                    <p>"You don't have any messages..." </p>
-            </div>  
-        <% } %>
-    </div>
+
+                    <!-- /navbar -->
+                    <nav class="navbar navbar-expand-lg bg-custom navbar-dark bg-dark ">
+                        <div class="container">
+                            <a class="navbar-brand" href="/message"><img src="img/logo300.png" width="54" alt=""> </a>
+
+
+                            <div class="MyCustomNavCollapse " id="navbarSupportedContent">
+                                <ul class="navbar-nav ms-auto mainNotificationUL ">
+
+                                    <li class="nav-item dropdown " style="margin-right: 20px; margin-top: 2px;"
+                                        id="notification-dropdown">
+                                        <a class="nav-link position-relative  " href="#" id="navbarDropdown"
+                                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <input type="hidden" id="userId-hidden" value="<%= session.userId %>">
+                                            <i style="margin-right: 2px;" class="fas fa-bell"></i>
+                                            <span id="notification-badge"
+                                                class="position-absolute top-25 start-100 translate-middle badge rounded-pill bg-danger ">
+                                                0
+                                            </span>
+                                        </a>
+                                        <ul class="dropdown-menu dropdown-menu-end animate__animated   "
+                                            aria-labelledby="navbarDropdown" id="notification-list"
+                                            style="width: 300px; max-height: 400px; overflow-y: auto; margin-left: -150px; margin-top: 7px; ">
+                                            <li>
+                                                <h6 class="dropdown-header">notification</h6>
+                                            </li>
+                                            <div id="notifications-container">
+                                            </div>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li><a class="dropdown-item text-center small text-primary"
+                                                    href="/massage">See all Messages</a></li>
+                                        </ul>
+                                    </li>
+
+
+
+
+
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/ChangeUserData">Settings</a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+
+
+
+                    <div id="MessageTitleContainer" style="margin-bottom: -75px !important; " class="container text-center py-5 mt-5 text-center">
+                        <div style="width: 51%; margin: auto;" class="card pt-5">
+                            <a href="" data-toggle="modal" data-target="#profile">
+                                <% if(userImg.public_id && userImg.secure_url){ %>
+                                    <img src="<%= userImg.secure_url %>" class="avatar  "
+                                        style="border: #1CB5E0 solid 3px; border-radius: 100px;" alt="">
+                                    <% } else { %>
+                                        <img src="img/avatar.png" class="avatar  "
+                                            style="border: #1CB5E0 solid 3px; border-radius: 100px;" alt="">
+                                        <% } %>
+                            </a>
+                            <h3 class="py-2">
+                                <%= session.userName %>
+                            </h3>
+                            <button data-bs-toggle="modal" data-bs-target="#share" id="OpenShareTap"
+                                class="btn mybtn-default-outline"><i class="fas fa-share-alt"></i> Share
+                                Profile</button>
+                        </div>
+                    </div>
+
+
+                    <!--  Share profile Modal -->
+                    <div class="modal fade" id="share" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Share Profile</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+
+                                <div class="modal-body text-center">
+                                    <a target="_blank" href="<%= link %>" class="text-primary fw-bold">
+                                        <%= link %>
+                                    </a>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                        Close
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- /modal -->
+
+
+
+                    <!-- =================messages=================== -->
+                  <div id="MessageContainer"  style="width: 74%; " class=" text-center my-5 pb-5 text-center  m-auto">
+                    <div class="container mt-5">
+                        <div class="row justify-content-center">
+                            <div style="background-color: #ffffff;" class="col-md-7 border py-3 px-2 border-1">
+                                <div class="d-flex bg-white shadow-sm rounded mb-4 overflow-hidden">
+                                    <div style="cursor: pointer;" class="flex-fill ActiveMessageTap p-3 text-center  text-white"><i
+                                            class="fas fa-comments"></i> Messages</div>
+                                    <div style="cursor: pointer;" class="flex-fill p-3 text-center border-start"><i
+                                    class="fas fa-paper-plane"></i> Settings</div>
+                                </div>
+
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h5 class="mb-0 ms-3" id="messages-count">Message: <%= massageLength %>
+                                    </h5>
+                                </div>
+
+                                <div id="messages-wrapper" class="">
+                                    <% for( let i=0; i < massage.length; i++ ) { %>
+
+
+
+                                        <div style="width: 100%;" class="MessageBody  d-flex flex-row justify-content-center " >
+
+
+                                            <div id="MessageImgAvater" style="width: 5%;" class="ImgHolder pt-2  d-flex flex-column ">
+
+                                                <img src="img/avatar.png" style="width: 120%; margin-left:auto ;" alt="">
+                                            
+                                            </div>
+
+                                            <div id="IconHolder" style="width: 5%; padding-top: 17px; padding-left: 10px;" class="ImgHolder    ">
+
+                                                 <i class="fa-solid fa-hand-point-left fa-xl " style="color: rgb(116, 192, 252);"></i>
+
+
+                                            </div>
+
+
+                                            <div id="MessageCard" style="width: 75%; background-color: #f5f5f6; border-radius:10px; border: 1px solid rgba(0,0,0,.125);" class="MassegeHolder  ms-2">
+                                                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%;" class="pt-5">
+                                                     <% if (massage.length) { %>
+                                                      <div style="width: 85%; border-top: 1px solid #80808041; border-bottom: 1px solid #80808041;" class="  text-center mb-3">
+                                                        <p class="mt-3">
+                                                        <%= massage[i].contant %>
+                                                         </p>
+
+                                                        
+                                                      </div>
+                                                     <div style="transform:translateX(-20px);" class="ms-auto">
+                                                        
+                                                         <button style="transform: scale(85%);" class="mb-2 btn btn-danger">
+                                                            <i class="fa-solid fa-trash-can" style="color: rgb(255, 255, 255); "></i>
+                                                            Remover
+                                                        </button>
+                                                     </div>
+                                                    <% } %>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                
+
+
+
+
+
+                                        <% } %>
+
+
+                                            <% for( let index=0; index==massage.length; index++ ) { %>
+                                                <div class="">
+                                                    <div class=" py-5 ">
+                                                        <p>"You don't have any messages..." </p>
+                                                    </div>
+                                                    <% } %>
+
+
+                                                </div>
+                                </div>
+                            </div>
+                        </div>
+
  
-</div>
+                   </div> 
+
+                   
 
 
 
 
 
-
-
-
-<%- include("footer.ejs")%>
+                        <%- include("footer.ejs")%>

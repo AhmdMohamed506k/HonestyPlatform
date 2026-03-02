@@ -2,14 +2,13 @@ const loader = document.querySelector(".loader");
 const loaderAfter = document.querySelector(".LoaderConatinerAfter");
 const loaderBefore = document.querySelector(".LoaderConatinerBefore");
 const navbar = document.querySelector("#myNav");
-
-
 const alertBox = document.getElementById('auto-close-alert');
 const hiddenInput = document.getElementById('userId-hidden');
 const userId = hiddenInput ? hiddenInput.value : null;
 var notificationsBox=[{}]
 const socket = io();
-
+  var toggle=false
+var flag=true;
 
 
 
@@ -81,7 +80,7 @@ window.addEventListener("DOMContentLoaded", async function() {
 
 
 
-
+// === Socket-Event
 if (userId && userId !== "undefined") {
     socket.emit('join', userId);
     console.log("✅ Joined room:", userId);
@@ -109,8 +108,6 @@ function timeAgo(date) {
     
     return "Just now";
 }
-
-
 socket.on('new_message', (data) => {
 
     let count = JSON.parse(localStorage.getItem("notification")) || 0;
@@ -131,9 +128,6 @@ function SetNotificationUI() {
     
     notificationNumIcon.innerHTML = count;
 }
-
-
-
 async function addNotificationToList() {
     const container = document.getElementById('notifications-container');
  
@@ -141,8 +135,7 @@ async function addNotificationToList() {
     try {
         const response = await fetch("/UserNotifications");
         const data = await response.json();
-        console.log("==>",data);
-        
+    
         
         if (data.status == "Success" ) {
    
@@ -184,10 +177,31 @@ return `
     }
 }
 addNotificationToList()
-
-
 document.getElementById('navbarDropdown').addEventListener('click', async () => {
+     
+ 
+     console.log("start");
 
+   if (toggle == false) {
+        document.querySelector("#notification-list").classList.remove("animate__fadeOut")
+    document.querySelector("#notification-list").classList.add("animate__fadeIn")
+ 
+    
+    toggle = true
+    console.log(toggle,"1");
+       
+   }else {
+    
+    document.querySelector("#notification-list").classList.remove("animate__fadeIn")
+    document.querySelector("#notification-list").classList.add("animate__fadeOut")
+    toggle = false
+      console.log(toggle,"2");
+
+   }
+
+
+
+    
     localStorage.setItem("notification", "0");
     SetNotificationUI();
 
@@ -200,6 +214,7 @@ document.getElementById('navbarDropdown').addEventListener('click', async () => 
 });
 
 
+// === User-Messeges === //
 
 
 
@@ -208,8 +223,233 @@ document.getElementById('navbarDropdown').addEventListener('click', async () => 
 
 
 
+// Change User ProfileImage
+if(document.querySelector("#changeUserImgAvatar")){
+document.querySelector("#changeUserImgAvatar").addEventListener("click",function OpenChangeProfileImgTap(){
+   document.querySelector("#UploadImgInnerContainer").classList.replace("animate__fadeOutDown","animate__fadeInUp");
+  document.querySelector("#UploadImgContainer").classList.replace("animate__fadeOut","animate__fadeIn");
+})
+document.querySelector("#ChangeUserProfileIMGCloseTapIcon").addEventListener("click",(e)=>{
+
+  
+  if (e.target.id == "ChangeUserProfileIMGCloseTapIcon" && document.querySelector("#UploadImgContainer")?.classList[6] == "animate__fadeIn") {
+        
+   document.querySelector("#UploadImgInnerContainer")?.classList.replace("animate__fadeInUp","animate__fadeOutDown");
+     
+  setTimeout(() => {
+    document.querySelector("#UploadImgContainer")?.classList.replace("animate__fadeIn" ,"animate__fadeOut");
+  }, 800);
+ 
+  }else{
+   OpenChangeProfileImgTap()
+  }
+})
+}
+// Change User Password
+if(document.querySelector("#OpenChangePassTap")){
+document.querySelector("#OpenChangePassTap").addEventListener("click",function OpenChangePassTab(){
+    
+  document.querySelector("#ChangeUserPasswordContainer").classList.replace("animate__fadeOutDown","animate__fadeInUp");
+  document.querySelector("#ChangeUserPassword").classList.replace("animate__fadeOut","animate__fadeIn");
+
+})
+document.querySelector("#ChangeUserPasswordCloseTapIcon").addEventListener("click",(e)=>{
 
 
+  if (e.target.id == "ChangeUserPasswordCloseTapIcon" && document.querySelector("#ChangeUserPassword")?.classList[6] == "animate__fadeIn") {
+        
+
+    
+  document.querySelector("#ChangeUserPasswordContainer")?.classList.replace("animate__fadeInUp","animate__fadeOutDown");
+     
+  setTimeout(() => {
+    document.querySelector("#ChangeUserPassword")?.classList.replace("animate__fadeIn" ,"animate__fadeOut");
+  }, 800);
+ 
+  }else{
+   OpenChangePassTab()
+  }
+})
+document.querySelector("#mySlashEyePassInput1").addEventListener("click",()=>{
+   
+   
+   if(document.querySelector("#mySlashEyePassInput1").classList[1] == "fa-eye-slash"){
+   document.querySelector("#mySlashEyePassInput1").classList.replace("fa-eye-slash","fa-eye" );
+   document.querySelector("#oldPasswordInput").type = "text"
+
+   
+   }else{
+      document.querySelector("#mySlashEyePassInput1").classList.replace("fa-eye","fa-eye-slash" )
+      document.querySelector("#oldPasswordInput").type = "password"
+
+   }
+  
+   
+   
+
+})
+document.querySelector("#mySlashEyePassInput2").addEventListener("click",()=>{
+   
+   
+  if(document.querySelector("#mySlashEyePassInput2").classList[1] == "fa-eye-slash"){
+   document.querySelector("#mySlashEyePassInput2").classList.replace("fa-eye-slash","fa-eye" );
+   document.querySelector("#NewUSerPasswordInput").type = "text"
+
+   
+  }else{
+    document.querySelector("#mySlashEyePassInput2").classList.replace("fa-eye","fa-eye-slash" )
+    document.querySelector("#NewUSerPasswordInput").type = "password"
+
+  }
+  
+   
+   
+
+})
+document.querySelector("#mySlashEyePassInput3").addEventListener("click",()=>{
+   
+   
+  if(document.querySelector("#mySlashEyePassInput3").classList[1] == "fa-eye-slash"){
+   document.querySelector("#mySlashEyePassInput3").classList.replace("fa-eye-slash","fa-eye" );
+   document.querySelector("#PasswordConfirmationInput").type = "text"
+
+   
+  }else{
+    document.querySelector("#mySlashEyePassInput3").classList.replace("fa-eye","fa-eye-slash" )
+    document.querySelector("#PasswordConfirmationInput").type = "password"
+
+  }
+  
+   
+   
+
+})
+}
+//Change user Informations
+if(document.querySelector("#OpenChangeInfoTap")){
+document.querySelector("#OpenChangeInfoTap").addEventListener("click" ,function openUserInfoTap(){
+
+  document.querySelector("#ChangeUserInformationsContainer").classList.replace("animate__fadeOutDown","animate__fadeInUp");
+  document.querySelector("#ChangeUserInformations").classList.replace("animate__fadeOut","animate__fadeIn");
+
+})
+document.querySelector("#ChangeUserInfoCloseTapIcon").addEventListener("click",function closeUserInfoTap(e){
+
+
+     
+  if (e.target.id == "ChangeUserInfoCloseTapIcon" && document.querySelector("#ChangeUserInformations")?.classList[6] == "animate__fadeIn") {
+        
+
+    
+  document.querySelector("#ChangeUserInformationsContainer")?.classList.replace("animate__fadeInUp","animate__fadeOutDown");
+     
+  setTimeout(() => {
+    document.querySelector("#ChangeUserInformations")?.classList.replace("animate__fadeIn" ,"animate__fadeOut");
+  }, 800);
+ 
+  }else{
+   openUserInfoTap()
+  }
+})
+}
+//Delete user Account
+if(document.querySelector("#OpenDeleteAccountTap")){
+document.querySelector("#OpenDeleteAccountTap").addEventListener("click" ,function OpenDeleteTap() {
+  
+  document.querySelector("#DeleteUserAccountContainer").classList.replace("animate__fadeOutDown","animate__fadeInUp");
+  document.querySelector("#DeleteUserAccountTap").classList.replace("animate__fadeOut","animate__fadeIn");
+  
+})
+document.querySelector("#closeTapIcon").addEventListener("click",(e)=>{
+         
+ 
+  
+
+  if (e.target.id == "closeTapIcon"  && document.querySelector("#DeleteUserAccountTap")?.classList[6] == "animate__fadeIn") {
+      
+
+    document.querySelector("#DeleteUserAccountContainer").classList.replace("animate__fadeInUp","animate__fadeOutDown");
+     
+  setTimeout(() => {
+    document.querySelector("#DeleteUserAccountTap").classList.replace("animate__fadeIn" ,"animate__fadeOut");
+  }, 800);
+ 
+  }else{
+    OpenDeleteTap()
+  }
+
+
+   
+  
+
+})
+document.querySelector("#GoBackBtn").addEventListener("click",(e)=>{
+         
+ 
+  
+
+  if (e.target.id == "GoBackBtn"  && document.querySelector("#DeleteUserAccountTap")?.classList[6] == "animate__fadeIn") {
+      
+
+    document.querySelector("#DeleteUserAccountContainer").classList.replace("animate__fadeInUp","animate__fadeOutDown");
+     
+  setTimeout(() => {
+    document.querySelector("#DeleteUserAccountTap").classList.replace("animate__fadeIn" ,"animate__fadeOut");
+  }, 800);
+ 
+  }else{
+    OpenDeleteTap()
+  }
+
+
+   
+  
+
+})
+
+}
+// ===========================================================
+
+// to close popup taps
+document?.addEventListener("click",(e)=>{
+
+
+  
+  if(e.target.id == "DeleteUserAccountTap"){
+   
+
+  document.querySelector("#DeleteUserAccountContainer").classList.replace("animate__fadeInUp","animate__fadeOutDown");
+  setTimeout(() => {
+    document.querySelector("#DeleteUserAccountTap").classList.replace("animate__fadeIn" ,"animate__fadeOut");
+  }, 800);
+
+
+  }else if(e.target.id == "ChangeUserInformations"){
+
+
+  document.querySelector("#ChangeUserInformationsContainer")?.classList.replace("animate__fadeInUp","animate__fadeOutDown");
+  setTimeout(() => {
+    document.querySelector("#ChangeUserInformations")?.classList.replace("animate__fadeIn" ,"animate__fadeOut");
+  }, 800);
+
+  
+  }else if(e.target.id === "ChangeUserPassword"){
+        
+  document.querySelector("#ChangeUserPasswordContainer")?.classList.replace("animate__fadeInUp","animate__fadeOutDown");
+     
+  setTimeout(() => {
+    document.querySelector("#ChangeUserPassword")?.classList.replace("animate__fadeIn" ,"animate__fadeOut");
+  }, 800);
+  }else if(e.target.id === "UploadImgContainer"){     
+   document.querySelector("#UploadImgInnerContainer")?.classList.replace("animate__fadeInUp","animate__fadeOutDown"); 
+  setTimeout(() => {
+    document.querySelector("#UploadImgContainer")?.classList.replace("animate__fadeIn" ,"animate__fadeOut");
+  }, 800);
+ 
+  }
+   
+
+})
 
 
 

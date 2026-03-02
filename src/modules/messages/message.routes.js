@@ -8,7 +8,7 @@ const messageRouter = Router()
 
 
 
-messageRouter.get("/massage", message);
+messageRouter.get("/message", message);
 
 
 messageRouter.post("/sendMasg/:id", sendMesg);
