@@ -168,11 +168,17 @@ body {
   height: 30px;
   cursor: pointer;
   display: flex;
+
   align-items: center;
   border-radius: 100px;
 
   border: 1px solid #0da39c;
   background-color: #0da39c;
+}
+.button2 a{
+  position: absolute;
+  left: -20px;
+  top:-5px;
 }
 .button2,
 .button__icon2,
@@ -217,10 +223,7 @@ body {
 .button2:active {
   border: 1px solid #0da39c;
 }
-#PhoneBtn {
-  opacity: 0;
-  transition: all 0.4s ease-in-out;
-}
+
 
 
 
@@ -590,7 +593,10 @@ body {
 .fav-star.active { color: #ffc107; }
 
 
-
+#MyBtn {
+   color:white !important;
+   
+  }
 
 
 
@@ -614,6 +620,18 @@ body {
     margin-bottom: 17px;
     padding: 5px 1px !important;
   }
+   #myNav .container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+   }
+  #MyCustomLogoutNav ul{
+    display: flex;
+    flex-direction: row ;
+    align-items: end;
+    gap: 10px !important;
+   }
+   
 /* ======> register */
   #MyRegisterObject {
     display: none;
@@ -645,6 +663,7 @@ body {
   #MyBtn {
     width: 100%;
     margin-bottom: 5px;
+   
   }
   .LinksContainer .GoHomeBtn,
   .LinksContainer .HaveAccountBtn {
@@ -775,7 +794,7 @@ body {
   }
 
 
-
+/* ====> Message */
 
 #MessageTitleContainer .card{
   width: 100% !important;
@@ -787,16 +806,37 @@ body {
 #MessageImgAvater{
  
    width: 10% !important;
-   margin-right: auto;
+
 }
 #IconHolder{
-   border: 1px darkorchid solid;
+
   display: none;
 }
 #MessageCard{
-  width: 90% !important;
+  width: 100% !important;
+ 
 }
+#totalWraper{
+ width: 100% !important;
 
+}
+.MessageBodyWrapper{
+  width: 100% !important;
+  
+}
+#MessageCardbody{
+  margin-top: 0px !important;
+    width: 100% !important;
+
+}
+#MessageContaint{
+   border: none !important;
+   width: 100% !important;
+   margin-bottom: 0px !important;
+}
+#SendMessageTextArea{
+  width: 100% !important;
+}
 
 }
 @media screen and (min-width: 351px) and (max-width: 768px) {
@@ -822,6 +862,18 @@ body {
   .MainBtnGroup a {
     margin-bottom: 17px;
   }
+  #myNav .container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+   }
+  #MyCustomLogoutNav ul{
+    display: flex;
+    flex-direction: row ;
+    align-items: end;
+    gap: 10px !important;
+   }
+   
 /* ======> register */
   .registerContainer {
     display: flex;
@@ -976,8 +1028,71 @@ body {
     right: 0;
   }
 
+
+
+
+
+/* ====> Message */
+
+#MessageTitleContainer .card{
+  width: 100% !important;
+}
+#MessageContainer{
+  width:93% !important;
+}
+
+#MessageImgAvater{
+ 
+   width: 10% !important;
+
+}
+#IconHolder{
+
+  display: none;
+}
+#MessageCard{
+  width: 100% !important;
+ 
+}
+#totalWraper{
+ width: 100% !important;
+
+}
+.MessageBodyWrapper{
+  width: 100% !important;
+  
+}
+#MessageCardbody{
+  margin-top: 0px !important;
+    width: 100% !important;
+
+}
+#MessageContaint{
+   border: none !important;
+   width: 100% !important;
+   margin-bottom: 0px !important;
+}
+#SendMessageTextArea{
+  width: 100% !important;
+}
+
 }
 @media screen and (min-width: 769px) and (max-width: 1266px){
+
+
+#myNav .container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+   }
+  #MyCustomLogoutNav ul{
+    display: flex;
+    flex-direction: row ;
+    align-items: end;
+    gap: 10px !important;
+   }
+   
+
 /* =====ChangeUserImg ==> */
 #UploadImgInnerContainer{
   width:55% !important;
@@ -1012,6 +1127,57 @@ body {
     left: -50px;
     right: 0;
   }
+
+
+  
+/* ====> Message */
+
+#MessageTitleContainer .card{
+  width: 100% !important;
+}
+#MessageContainer{
+  width:93% !important;
+}
+
+#MessageImgAvater{
+ 
+   width: 10% !important;
+
+}
+#MessageImgAvater img{
+  width: 40% !important;
+}
+#IconHolder{
+
+  display: none;
+}
+#MessageCard{
+  width: 95% !important;
+  margin-right: 40px !important;
+ 
+}
+#totalWraper{
+ width: 90% !important;
+
+}
+.MessageBodyWrapper{
+  width: 100% !important;
+  
+}
+#MessageCardbody{
+  margin-top: 0px !important;
+    width: 100% !important;
+
+}
+#MessageContaint{
+   border: none !important;
+   width: 100% !important;
+   margin-bottom: 0px !important;
+}
+#SendMessageTextArea{
+  width: 100% !important;
+}
+
 
 
 }

@@ -78,6 +78,135 @@ window.addEventListener("DOMContentLoaded", async function() {
 });
 
 
+if(document.querySelector("#NewFogetpasswordEye")){
+
+ 
+  
+   document.querySelector("#NewFogetpasswordEye").addEventListener("click",()=>{
+  
+      
+   
+   if(document.querySelector("#NewFogetpasswordEye").classList[1] == "fa-eye-slash"){
+
+
+   document.querySelector("#NewFogetpasswordEye").classList.replace("fa-eye-slash","fa-eye" );
+   document.querySelector("#NewFogetpassword").type = "text"
+
+   
+   }else{
+      document.querySelector("#NewFogetpasswordEye").classList.replace("fa-eye","fa-eye-slash" )
+      document.querySelector("#NewFogetpassword").type = "password"
+
+   }
+  
+   
+   
+
+})
+
+
+  document.querySelector("#newForgetPassConfirmationEye").addEventListener("click",()=>{
+  
+      
+   
+   if(document.querySelector("#newForgetPassConfirmationEye").classList[1] == "fa-eye-slash"){
+
+
+   document.querySelector("#newForgetPassConfirmationEye").classList.replace("fa-eye-slash","fa-eye" );
+   document.querySelector("#newForgetPassConfirmation").type = "text"
+
+   
+   }else{
+      document.querySelector("#newForgetPassConfirmationEye").classList.replace("fa-eye","fa-eye-slash" )
+      document.querySelector("#newForgetPassConfirmation").type = "password"
+
+   }
+  
+   
+   
+
+})
+
+}
+if(document.querySelector("#RegisterPassinput")){
+
+ 
+  
+   document.querySelector("#RegisterPassEye").addEventListener("click",()=>{
+  
+      
+   
+   if(document.querySelector("#RegisterPassEye").classList[1] == "fa-eye-slash"){
+
+
+   document.querySelector("#RegisterPassEye").classList.replace("fa-eye-slash","fa-eye" );
+   document.querySelector("#RegisterPassinput").type = "text"
+
+   
+   }else{
+      document.querySelector("#RegisterPassEye").classList.replace("fa-eye","fa-eye-slash" )
+      document.querySelector("#RegisterPassinput").type = "password"
+
+   }
+  
+   
+   
+
+})
+
+
+  document.querySelector("#RegisterPassConfirmationEye").addEventListener("click",()=>{
+  
+      
+   
+   if(document.querySelector("#RegisterPassConfirmationEye").classList[1] == "fa-eye-slash"){
+
+
+   document.querySelector("#RegisterPassConfirmationEye").classList.replace("fa-eye-slash","fa-eye" );
+   document.querySelector("#RegisterPassConfirmationInput").type = "text"
+
+   
+   }else{
+      document.querySelector("#RegisterPassConfirmationEye").classList.replace("fa-eye","fa-eye-slash" )
+      document.querySelector("#RegisterPassConfirmationInput").type = "password"
+
+   }
+  
+   
+   
+
+})
+
+}
+if(document.querySelector("#LoginPassInput")){
+
+ 
+  
+   document.querySelector("#LoginPassInputEye").addEventListener("click",()=>{
+  
+      
+   
+   if(document.querySelector("#LoginPassInputEye").classList[1] == "fa-eye-slash"){
+
+
+   document.querySelector("#LoginPassInputEye").classList.replace("fa-eye-slash","fa-eye" );
+   document.querySelector("#LoginPassInput").type = "text"
+
+   
+   }else{
+      document.querySelector("#LoginPassInputEye").classList.replace("fa-eye","fa-eye-slash" )
+      document.querySelector("#LoginPassInput").type = "password"
+
+   }
+  
+   
+   
+
+})
+
+
+
+}
 
 
 // === Socket-Event
@@ -119,7 +248,7 @@ socket.on('new_message', (data) => {
     addNotificationToList();
 
 
-    new Audio('/sounds/notification.mp3').play().catch(() => {});
+    new Audio('/sounds/notification.wav').play().catch(() => {});
 });
 
 function SetNotificationUI() {
@@ -177,6 +306,8 @@ return `
     }
 }
 addNotificationToList()
+
+
 document.getElementById('navbarDropdown').addEventListener('click', async () => {
      
  
@@ -215,8 +346,6 @@ document.getElementById('navbarDropdown').addEventListener('click', async () => 
 
 
 // === User-Messeges === //
-
-
 
 
 

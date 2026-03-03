@@ -20,9 +20,18 @@ const userSchema = new mongoose.Schema({
       type:String,
       default:null,
     },
+     isVerified:{
+      type:Boolean,
+      default:false
+    },
+     VerificationCode:{
+      type:String,
+      default:null
+    },
+    
     password: String,
     PasswordConfirmation:String,
-    
+  
 })
 
 userSchema.virtual('myNotifications', {

@@ -18,7 +18,7 @@
         <p class="py-2 text-secondary"><%= AboutUser %></p>
 
 
-        <div class="container w-50 m-auto">
+        <div id="SendMessageTextArea" class="container w-50 m-auto">
             <form action="/sendMasg/<%= session.userId %>" method="post">
                 <textarea class="form-control" name="masg" id="" cols="10" rows="9" placeholder="You cannot send a Sarahah to yourself, share your profile with your friends :)"></textarea>
                 <button class="btn btn-outline-info mt-3"><i class="far fa-paper-plane"></i> Send</button>

@@ -1,0 +1,118 @@
+<%- include("header.ejs")%>
+
+
+
+
+    <div class="LoaderConatiner">
+    <div class="LoaderConatinerAfter"></div>
+    <div class="loader"></div>
+    <div class="LoaderConatinerBefore"></div>
+    </div>
+
+
+
+    <% if (error && error.length> 0) { %>
+    <div class="alert alert-danger custom-alert" id="auto-close-alert">
+            <%= error[0] %>
+    </div>
+    <% } %>
+    <% if (success && success.length> 0) { %>
+    <div class="alert alert-success custom-alert" id="auto-close-alert">
+                    <%= success[0] %>
+    </div>
+    <% } %>
+
+
+
+
+    <div style="top: -63px;  overflow: hidden; height: 114vh; " class="registerContainer position-relative  z-1">
+
+            <div id="MyRegisterObject" class="" style="   ">
+                <script type="module"
+                    src="https://unpkg.com/@splinetool/viewer@1.12.58/build/spline-viewer.js"></script>
+                <spline-viewer url="https://prod.spline.design/i9KUe7c7-cAYyXIw/scene.splinecode"></spline-viewer>
+            </div>
+
+            <div class=" MyRegisterFormContainer container text-center  my-5 d-flex align-items-center justify-content-center " style="height: 100vh;  ">
+
+                <div id="MyRegisterForm" style="width: 90%;" class=" pe-4  m-auto ">
+                 
+
+
+                        <div class="user MyRegisterFormHeader my-3 d-flex justify-content-start align-items-start flex-column">
+
+                                <h4 style="font-weight: 700;  margin-bottom: 0px;" class="login">Forget Password</h4>
+                                <p style="color: rgb(128, 128, 128); font-size: 0.8rem;" class="ms-1">please Enter you Email</p>
+                        </div>
+
+
+
+                            <form method="POST" class="MyRegisterFormCenter mb-3" style="border-bottom: 2px dotted rgba(128, 128, 128, 0.668); " class="mb-4 pb-4" action="/ChangeForgetpass">
+
+
+
+                                      <div class="position-relative">
+                                            <input type="password" style="border-radius: 10px; padding-top:4px;"   class="form-control " id="NewFogetpassword" name="password"   placeholder="Enter your New Password">
+                                            <i id="NewFogetpasswordEye"  class="fa-solid fa-eye-slash position-absolute m-auto  "  style="color: rgb(116, 192, 252); bottom:0; top:11px; right:12px; cursor: pointer;"></i>
+                                        </div>                           
+                            
+                            
+                                     <div class="position-relative">
+                                            <input type="password" style="border-radius: 10px; padding-top:4px;" class="form-control " id="newForgetPassConfirmation" name="PasswordConfirmation"  placeholder="Enter Password Confirmation">
+                                            <i id="newForgetPassConfirmationEye" class="fa-solid fa-eye-slash position-absolute m-auto  " style="color: rgb(116, 192, 252); bottom:0; top:11px; right:12px; cursor: pointer;"></i>
+                                        </div> 
+
+
+                            <button id="MyBtn" style="width: 55%;"  class="btn btn-default-Btn  my-4   ">
+
+
+                                Change old Password
+                                <svg id='arrow-big-right-line_24' width='24' height='24' viewBox='0 0 24 24'
+                                        xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'>
+                                        <rect width='24' height='24' stroke='none' fill='#fff' opacity='0' />
+
+
+                                        <g transform="matrix(1 0 0 1 12 12)">
+                                            <g style="">
+                                                <g transform="matrix(1 0 0 1 0 0)">
+                                                    <path
+                                                        style="stroke: none; stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"
+                                                        transform=" translate(-12, -12)"
+                                                        d="M 0 0 L 24 0 L 24 24 L 0 24 z" stroke-linecap="round" />
+                                                </g>
+                                                <g transform="matrix(1 0 0 1 1.29 0)">
+                                                    <path
+                                                        style="stroke: rgb(255, 255, 255); stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"
+                                                        transform=" translate(-13.29, -12)"
+                                                        d="M 12 9 L 12 5.414 C 12.00008634801375 5.009604102063173 12.24372750009674 4.645065949783353 12.617345441988702 4.490322021887854 C 12.990963383880661 4.335578093992356 13.421005745627319 4.421092084422405 13.707 4.707 L 20.293 11.293 C 20.68338193833286 11.683499851485813 20.68338193833286 12.316500148514185 20.293 12.706999999999999 L 13.706999999999999 19.293 C 13.421005745627317 19.578907915577595 12.99096338388066 19.664421906007643 12.6173454419887 19.509677978112144 C 12.243727500096739 19.354934050216645 12.000086348013749 18.990395897936825 11.999999999999998 18.586 L 11.999999999999998 14.999999999999998 L 5.999999999999998 14.999999999999998 L 5.999999999999998 8.999999999999998 L 11.999999999999998 8.999999999999998 z"
+                                                        stroke-linecap="round" />
+                                                </g>
+                                                <g transform="matrix(1 0 0 1 -9 0)">
+                                                    <path
+                                                        style="stroke: rgb(255, 255, 255); stroke-width: 2; stroke-dasharray: none; stroke-linecap: round; stroke-dashoffset: 0; stroke-linejoin: round; stroke-miterlimit: 4; fill: none; fill-rule: nonzero; opacity: 1;"
+                                                        transform=" translate(-3, -12)" d="M 3 9 L 3 15"
+                                                        stroke-linecap="round" />
+                                                </g>
+                                            </g>
+                                        </g>
+                                </svg>
+                            </button>
+                            </form>
+
+
+                           
+
+
+                </div>
+
+
+            </div>
+
+    </div>
+
+
+
+
+
+
+<%- include("footer.ejs")%>
