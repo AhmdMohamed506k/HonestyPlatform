@@ -592,7 +592,9 @@ body {
 
 .fav-star.active { color: #ffc107; }
 
-
+#coulmn1{
+  width: 50% ;
+}
 #MyBtn {
    color:white !important;
    
@@ -632,6 +634,9 @@ body {
     gap: 10px !important;
    }
    
+   #MessageTitleContant{
+    margin-top: -25px !important;
+   }
 /* ======> register */
   #MyRegisterObject {
     display: none;
@@ -802,6 +807,9 @@ body {
 #MessageContainer{
   width:93% !important;
 }
+#coulmn1{
+  width:100% ;
+}
 
 #MessageImgAvater{
  
@@ -812,6 +820,9 @@ body {
 
   display: none;
 }
+#coulmn1{
+ background-color: #0da39c;
+}
 #MessageCard{
   width: 100% !important;
  
@@ -820,6 +831,7 @@ body {
  width: 100% !important;
 
 }
+
 .MessageBodyWrapper{
   width: 100% !important;
   
@@ -1038,8 +1050,9 @@ body {
   width: 100% !important;
 }
 #MessageContainer{
-  width:93% !important;
+  width:100% !important;
 }
+
 
 #MessageImgAvater{
  
@@ -1053,6 +1066,9 @@ body {
 #MessageCard{
   width: 100% !important;
  
+}
+#coulmn1{
+  width:90% ;
 }
 #totalWraper{
  width: 100% !important;
@@ -1178,6 +1194,7 @@ body {
   width: 100% !important;
 }
 
-
-
+#coulmn1{
+  width:100% ;
+}
 }
