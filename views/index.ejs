@@ -3,7 +3,7 @@
 
 
 
-   <div class="LoaderConatiner">
+    <div class="LoaderConatiner">
         <div class="LoaderConatinerAfter"></div>
         <div class="loader"></div>
         <div class="LoaderConatinerBefore"></div>
@@ -13,7 +13,16 @@
 
 
 
-
+    <% if (validationErrors && validationErrors.length > 0) { %>
+    <div St class="alert alert-warning animate__animated animate__fadeInDown" style="margin: 20px; z-index: 20;">
+        <h5 class="alert-heading"><i class="fas fa-exclamation-triangle"></i> Please check the following:</h5>
+        <ul class="mb-0">
+            <% validationErrors.forEach(err => { %>
+                <li><%= err %></li>
+            <% }) %>
+        </ul>
+    </div>
+    <% } %>
     <% if (error && error.length> 0) { %>
     <div class="alert alert-danger custom-alert" id="auto-close-alert">
             <%= error[0] %>
@@ -26,26 +35,20 @@
     <% } %>
 
 
-<div  style="top: -56px;  overflow: hidden; " class="MyBG position-relative z-1">
-<script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.58/build/spline-viewer.js"></script>
-<spline-viewer url="https://prod.spline.design/edaxXu65cIlijzjT/scene.splinecode"></spline-viewer>
+        <div  style="top: -56px;  overflow: hidden; " class="MyBG position-relative z-1">
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.58/build/spline-viewer.js"></script>
+        <spline-viewer url="https://prod.spline.design/edaxXu65cIlijzjT/scene.splinecode"></spline-viewer>
+
+
+
 
         <div id="MainBtnGroup"  style="position: absolute;top: 0; bottom: 0;  height: 100vh; opacity: 0; " class=" text-center d-flex flex-column justify-content-center align-items-center p-3 ms-5  ">
-
              <h1 class=" HomeTitle">Wellcome  at </br>Honesty platform</h1>
              <p  class="MainParagraph"  >Honesty allows you to receive constructive feedback from your friends and co-workers</p>
+            <div class="MainBtnGroup ">
+                <a href="/login"  class="btn mybtn-default-outline mx-3  py-2"><i class="fas fa-user"></i> Login</a>
 
-
-
-
-               <div class="MainBtnGroup ">
-                <a href="/login"  class="btn mybtn-default-outline mx-3  py-2"><i
-                        class="fas fa-user"></i> Login</a>
-
-
-                <a href="/register"  class="btn mybtn-default-outline mx-3  py-2"><i
-                        class="far fa-edit"></i> Register</a>
-
+                <a href="/register"  class="btn mybtn-default-outline mx-3  py-2"><i class="far fa-edit"></i> Register</a>
             </div>
 
         </div>

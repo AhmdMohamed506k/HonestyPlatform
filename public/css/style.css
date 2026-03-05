@@ -20,9 +20,9 @@ body {
 }
 #OpenShareTap{
   
-  color: #0da39c ;
+  color: #fff ;
   background-color: transparent;
-  border-color: #10BBB3;
+  border-color: #fff;
   width: 200px;
   margin: 0 auto;
   border-radius: 10px;
@@ -787,17 +787,16 @@ body {
 
 
  /* Notifications */
- .MyCustomNavCollapse .mainNotificationUL{
+.MyCustomNavCollapse .mainNotificationUL{
   display: flex;
   flex-direction: row;
   position: relative;
  }
-  #notification-list{
+  .MyCustomNavCollapse .notification-list{
     position: absolute;
     left: -50px;
     right: 0;
   }
-
 
 /* ====> Message */
 
@@ -820,9 +819,7 @@ body {
 
   display: none;
 }
-#coulmn1{
- background-color: #0da39c;
-}
+
 #MessageCard{
   width: 100% !important;
  
@@ -1034,7 +1031,7 @@ body {
   flex-direction: row;
   position: relative;
  }
-  #notification-list{
+  .MyCustomNavCollapse .notification-list{
     position: absolute;
     left: -50px;
     right: 0;
@@ -1138,12 +1135,11 @@ body {
   flex-direction: row;
   position: relative;
  }
-  #notification-list{
+  .MyCustomNavCollapse .notification-list{
     position: absolute;
     left: -50px;
     right: 0;
   }
-
 
   
 /* ====> Message */

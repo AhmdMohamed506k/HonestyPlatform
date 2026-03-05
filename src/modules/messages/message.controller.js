@@ -30,25 +30,35 @@ export const message = async (req, res, next) => {
         } else {
           
             messages = await messageModel.find({ userId }).sort({ createdAt: -1 });
-         
+            
             await redisClient.setEx(cacheKey, 300, JSON.stringify(messages));
             
         }
 
-       
+
+
+
+        const notifications = await notificationModel.find({ recipient: userId })
+        .sort({ createdAt: -1 })
+        .limit(10); 
+            
+
+        const notificationCount = await notificationModel.countDocuments({ notificationCount: false })
         const user = await userModel.findOne({_id:userId});
         const url = `${req.protocol}://${req.headers.host}/user/${userId}`;
   
 
   
-         console.log(messages);
+     
 
 
         res.render("massage.ejs", { 
             session: req.session, 
             link: url, 
             massage: messages, 
-            massageLength: messages.length, 
+            massageLength: messages.length,
+            notifications:notifications, 
+            falseNotificationCount:notificationCount,
             user, 
             userImg: user.profileImg 
         });
@@ -63,35 +73,39 @@ export const message = async (req, res, next) => {
 export const sendMesg = async (req, res, next) => {
     try {
         const receiverId = req.params.id;
-        const messageContent = req.body.masg;
-        
-        
-        await messageModel.create({ contant: messageContent, userId: receiverId });
+        const messageContent = req.body.masg; 
 
-    
-
-        
-       await notificationModel.create({
+      
+        const newMessage = await messageModel.create({ 
+            contant: messageContent, 
+            userId: receiverId 
+        });
+        const totalMessagesCount = await messageModel.countDocuments({ userId: receiverId });
+      
+        await notificationModel.create({
             recipient: receiverId,
             content: "You got a new Message ! 🤫"
         });
 
    
         const io = getIO();
-        io.to(receiverId).emit('new_message',{ 
-            message: "You got a new Message! 🤫" 
+        io.to(receiverId.toString()).emit('receiveRealTimeMessage', { 
+            message: messageContent,
+            messageCount:totalMessagesCount,
+            notification: "You got a new Message! 🤫",
+            createdAt: newMessage.createdAt 
         });
 
-
-
-
+        
         await redisClient.del(`user:messages:${receiverId}`);
+
+       
+        req.flash("success", "Your secret message has been sent! 🚀");
         res.redirect(`/user/${receiverId}`);
 
-
-        
     } catch (error) {
-        console.log("Error sending message:", error);
-        res.status(500).send("Internal Server Error");
+        console.error("Error sending message:", error);
+        req.flash("error", "Failed to send message. Please try again.");
+        res.redirect("back"); 
     }
 }

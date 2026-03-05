@@ -4,7 +4,7 @@ import mongoose  from "mongoose"
 
 
 const connectionDB = async() => {
-    return await mongoose.connect("mongodb://0.0.0.0:27017/sarahaha")
+    return await mongoose.connect(`mongodb+srv://ahmed:${process.env.DBPassword}@honsety.dy1qa98.mongodb.net/?appName=Honsety`)
 
 
     .then(() => console.log("successfully connected LOL :)"))

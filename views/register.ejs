@@ -11,9 +11,26 @@
         <div class="LoaderConatinerBefore"></div>
     </div>
 
+     
 
 
 
+   
+
+
+
+
+
+   <% if (validationErrors && validationErrors.length > 0) { %>
+    <div  class="alert alert-warning animate__animated animate__fadeInDown" style="margin: 20px; z-index: 20;">
+        <h5 class="alert-heading"><i class="fas fa-exclamation-triangle"></i> Please check the following:</h5>
+        <ul class="mb-0">
+            <% validationErrors.forEach(err => { %>
+                <li><%= err %></li>
+            <% }) %>
+        </ul>
+    </div>
+  <% } %>
     <% if (error && error.length> 0) { %>
     <div class="alert alert-danger custom-alert" id="auto-close-alert">
         <%= error[0] %>

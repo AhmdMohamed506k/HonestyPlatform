@@ -7,9 +7,9 @@ const hiddenInput = document.getElementById('userId-hidden');
 const userId = hiddenInput ? hiddenInput.value : null;
 var notificationsBox=[{}]
 const socket = io();
-  var toggle=false
+var toggle=false
 var flag=true;
-
+var displayMSg;
 
 
 
@@ -237,99 +237,43 @@ function timeAgo(date) {
     
     return "Just now";
 }
-socket.on('new_message', (data) => {
+socket.on('receiveRealTimeMessage', (data) => {
+    console.log("New message received:", data); // للتأكد من البيانات في الـ Console
 
+    // 1. تحديث الـ LocalStorage (للحفاظ على العدد عبر الصفحات)
     let count = JSON.parse(localStorage.getItem("notification")) || 0;
     count++;
-    localStorage.setItem("notification", JSON.stringify(count));
+    localStorage.setItem("notification", JSON.stringify(count));  
 
+    // 2. تحديث الـ UI الخاص بالإشعارات (الجرس والرقم الأحمر)
+    updateNotificationBadge(count);
+    
+    // 3. إضافة الإشعار الجديد للقائمة المنسدلة (Dropdown) فوراً
+    addNotificationToDropdown(data);
 
-    SetNotificationUI();
-    addNotificationToList();
+    // 4. إذا كان المستخدم في صفحة الرسائل، أضف الرسالة للقائمة
+    if (document.querySelector("#messages-wrapper")) {
+        AddNewSingleMessage(data);
+        
+        // تحديث عداد الرسائل في الصفحة (لو موجود)
+        const countElem = document.querySelector("#messages-count");
+        if(countElem && data.messagesCount) {
+            countElem.innerHTML = `Message: ${data.messagesCount}`;
+        }
+    }
 
-
+    // 5. تنبيه صوتي
     new Audio('/sounds/notification.wav').play().catch(() => {});
 });
 
-function SetNotificationUI() {
-    const notificationNumIcon = document.querySelector("#notification-badge");
-    const count = JSON.parse(localStorage.getItem("notification")) || 0;
-    
-    notificationNumIcon.innerHTML = count;
-}
-async function addNotificationToList() {
-    const container = document.getElementById('notifications-container');
- 
-     
-    try {
-        const response = await fetch("/UserNotifications");
-        const data = await response.json();
-    
-        
-        if (data.status == "Success" ) {
-   
-
-            const display = data.notifications.map((notice) => {
-                const time = new Date(notice.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-                
-    
-const relativeTime = timeAgo(notice.createdAt); 
-const isRead = notice.isRead;
-const badgeHtml = !isRead ? `<span class="badge bg-info p-1" style="font-size: 0.6rem;">New</span>` : '';
-
-return `
-    <li>
-        <a class="dropdown-item d-flex align-items-center py-3 border-bottom" href="/massage" 
-           style="white-space: normal; background-color: ${isRead ? '#ffffff' : '#f8f9fa'};">
-            <div class="me-3">
-                <div class="icon-circle ${isRead ? 'bg-secondary' : 'bg-primary'} text-white p-2 rounded-circle d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
-                    <i class="fas fa-envelope"></i>
-                </div>
-            </div>
-            <div class="w-100">
-                <div class="d-flex justify-content-between align-items-center mb-1">
-                    <span class="small text-muted">${relativeTime}</span>
-                    ${badgeHtml}
-                </div>
-                <p class="mb-0 text-dark" style="font-size: 0.9rem; font-weight: ${isRead ? '400' : '700'};">
-                    ${notice.content}
-                </p>
-            </div>
-        </a>
-    </li>`;
-            }).join(''); 
-            
-            container.innerHTML = display || '<li><p class="text-center p-2">Sorry there are no notifications /p></li>';
-        }
-    } catch (err) {
-        console.error("Failed to fetch notifications:", err);
-    }
-}
-addNotificationToList()
 
 
-document.getElementById('navbarDropdown').addEventListener('click', async () => {
+document.getElementById('notification-dropdown').addEventListener('click', async () => {
      
  
-     console.log("start");
+     
 
-   if (toggle == false) {
-        document.querySelector("#notification-list").classList.remove("animate__fadeOut")
-    document.querySelector("#notification-list").classList.add("animate__fadeIn")
- 
-    
-    toggle = true
-    console.log(toggle,"1");
-       
-   }else {
-    
-    document.querySelector("#notification-list").classList.remove("animate__fadeIn")
-    document.querySelector("#notification-list").classList.add("animate__fadeOut")
-    toggle = false
-      console.log(toggle,"2");
-
-   }
-
+  
 
 
     
@@ -340,9 +284,68 @@ document.getElementById('navbarDropdown').addEventListener('click', async () => 
     await fetch('/UserNotifications/mark-as-read', { method: 'POST' });
 
     setTimeout(() => {
-        addNotificationToList();
+        addNotificationToDropdown();
     }, 9000); 
 });
+
+
+
+function updateNotificationBadge(count) {
+    const badge = document.querySelector("#notification-badge");
+    if (badge) {
+        badge.innerText = count;
+        badge.classList.remove('d-none'); 
+        badge.classList.add('animate__animated', 'animate__rubberBand');
+        setTimeout(() => badge.classList.remove('animate__rubberBand'), 1000);
+    }
+}
+function SetNotificationUI() {
+    const notificationNumIcon = document.querySelector("#notification-badge");
+    const count = JSON.parse(localStorage.getItem("notification")) || 0;
+    
+    notificationNumIcon.innerHTML = count;
+}
+function addNotificationToDropdown(data) {
+    const container = document.querySelector("#real-time-notifications");
+    if (container) {
+   
+        const noNoti = document.querySelector("#no-notifications");
+        if (noNoti) noNoti.remove();
+
+        const newNotiHTML = `
+            <li class="dropdown-item border-bottom animate__animated animate__fadeInDown" style="background-color: #f8f9fa;">
+                <p class="mb-0">${data.notification}</p>
+                <small class="text-muted">Just now</small>
+            </li>
+        `;
+        // وضع الإشعار في الأول (Top)
+        container.insertAdjacentHTML('afterbegin', newNotiHTML);
+    }
+}
+function AddNewSingleMessage(data) {
+    const wrapper = document.querySelector("#messages-wrapper");
+    
+    const emptyMsg = document.querySelector("#empty-msg-p");
+    if(emptyMsg) emptyMsg.remove();
+
+    const newMessageHTML = `
+        <div style="width: 100%;" class="MessageBodyWrapper mb-3 d-flex flex-row justify-content-center animate__animated animate__backInDown">
+            <div id="MessageCard" style="width: 90%; background-color: #f5f5f6; border-radius:10px; border: 1px solid rgba(0,0,0,.125); margin-left: 12px;" class="MassegeHolder">
+                <div id="MessageCardbody" style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%;" class="py-4">
+                    <div id="MessageContaint" style="width: 65%; border-top: 1px solid #80808041; border-bottom: 1px solid #80808041;" class="text-center">
+                        <p class="mt-3">${data.message}</p>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+
+    
+    wrapper.insertAdjacentHTML('afterbegin', newMessageHTML);
+}
+AddNewSingleMessage()
+addNotificationToDropdown()
+
+
 
 
 // === User-Messeges === //

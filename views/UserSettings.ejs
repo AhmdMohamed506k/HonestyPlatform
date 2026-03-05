@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings</title>
     <link rel="shortcut icon" href="/img/favicon-32x32.png" type="image/x-icon">
-    <link  rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <link   rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"  >
-  
-    <link  href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     <link rel="stylesheet" href="/css/style.css">
 
@@ -19,387 +20,489 @@
 
 
 
-    <div  class="LoaderConatiner ">
+    <div class="LoaderConatiner ">
         <div class="LoaderConatinerAfter"></div>
         <div class="loader"></div>
         <div class="LoaderConatinerBefore"></div>
     </div>
 
 
-    <% if (error && error.length> 0) { %>
-    <div class="alert alert-danger custom-alert" id="auto-close-alert">
-            <%= error[0] %>
-    </div>
-    <% } %>
-    <% if (success && success.length> 0) { %>
-    <div class="alert alert-success custom-alert" id="auto-close-alert">
-                    <%= success[0] %>
-    </div>
-    <% } %>
 
 
 
 
-                    <div id="DeleteUserAccountTap"  style="background-color: rgb(0, 0, 0 , 0.6); height: 100vh; width: 100%; z-index: 17; "  class="position-fixed px d-flex justify-content-center align-items-center  animate__animated  animate__fadeOut ">
-                        <div id="DeleteUserAccountContainer" style="border-radius: 10px; display: flex; align-items: center;  justify-content: center;" class="card py-4 position-relative  m-auto animate__animated  animate__fadeOutDown">
-                             <i id="closeTapIcon" class="fa-solid fa-x fa-xs position-absolute " style="color: rgb(162, 160, 160); right: 16px; top:20px; cursor: pointer;"></i>
-                            
-                            
-                            
-                            <h5 style="margin: 0px 0px 10px 0px; font-size: 1rem;" class="">Delete user Account</h5>
 
-                            <div class="DeleteAccountCard d-flex  justify-content-center align-items-center text-center">
 
-                                <form action="/handelDeleteUserAccount" method="post">
 
 
 
 
 
-                                    <div style="margin-bottom: -10px;" class="form-group">
-                                        <h3 id="DeleteUserTitle" class="text-secondary">are you sure you want to delete
-                                            your Account</h3>
-                                        <div class="">
-                                            <input type="email" style="border-radius: 10px; padding-top:4px;"
-                                                class="form-control " id="email" name="email" placeholder="User email">
-                                        </div>
-                                    </div>
 
-
-
-
-                                    <div id="BtnDeleteAccountGroup" class=" w-auto d-flex flex-wrap justify-content-between">
-
-                                        <button class="btn btn-default-Btn-delete mt-4 text-white">
-                                            <i class="fa-solid fa-trash-can fa-xs " style="color: rgb(255, 255, 255);"></i>
-                                            Delete Account
-                                        </button>
-
-                                       
-
-                                    <span id="GoBackBtn" class="btn btn-default-Btn-no mt-4 text-white">
-                                            <i class="fa-solid fa-ban fa-xs" style="color: rgb(255, 255, 255);"></i>
-                                            No dont Delete
-                                    </span>
-
-                                    </div>
-
-                                </form>
-                           
-
-
-                            </div>
-
-
-
-                        </div>
-                    </div>
-                    <div id="ChangeUserInformations" style="background-color: rgb(0, 0, 0 , 0.6); height: 100vh; width: 100%; z-index: 17; "   class="position-fixed px d-flex justify-content-center align-items-center  animate__animated  animate__fadeOut">
-                        <div id="ChangeUserInformationsContainer" style="border-radius: 10px; display: flex; align-items: center;  justify-content: center;" class="card py-4 position-relative  m-auto animate__animated  animate__fadeOutDown">
-
-
-                            <i id="ChangeUserInfoCloseTapIcon" class="fa-solid fa-x fa-xs position-absolute " style="color: rgb(162, 160, 160); right: 16px; top:20px; cursor: pointer;"></i>
-
-
-
-                            <h5 style="margin: 0px 0px 10px 0px; font-size: 1rem;">Change user Informations</h5>
-                            <div class="InformationsCard d-flex  justify-content-center align-items-center text-center">
-
-                                <form action="/handelChangeUserInformations" method="post">
-
-
-
-
-
-                                    <div class="form-group">
-
-                                        <div class="">
-                                            <input type="text" style="border-radius: 10px; padding-top:4px;"
-                                                class="form-control " id="name" name="name" placeholder="User name">
-                                        </div>
-
-
-                                        <div class="">
-                                            <select
-                                                style="border-radius: 10px; padding-top:4px; width: 100%; padding: 8px; background-color: white; border: 1px solid rgb(206, 212, 218); color: gray;"
-                                                id="gender" name="gender" class="form-select"
-                                                aria-label="Default select example">
-                                                <option disabled selected hidden>gender</option>
-                                                <option style="color: black;" value="male">male</option>
-                                                <option style="color: black;" value="female">female</option>
-                                            </select>
-                                        </div>
-
-
-
-                                        <textarea class="form-control" style="border-radius: 10px; padding-top:4px;"
-                                            id="about" name="about" placeholder="About" rows="3"></textarea>
-
-
-                                    </div>
-
-
-
-                                    <button style=" " class="btn btn-default-Btn2  mt-4 text-white  ">
-                                        Change Informations
-                                    </button>
-
-                                </form>
-
-
-
-                            </div>
-
-
-
-                        </div>
-                    </div>
-                    <div id="UploadImgContainer"  style="background-color: rgb(0, 0, 0 , 0.6); height: 100vh; width: 100%; z-index: 17; "  class="position-fixed px d-flex justify-content-center align-items-center animate__animated  animate__fadeOut ">
-                        <div id="UploadImgInnerContainer" style="border-radius: 10px; display: flex; align-items: center;  justify-content: center;" class="card py-4 w-75 m-auto position-relative animate__animated  animate__fadeOutDown">
-
-                            <i id="ChangeUserProfileIMGCloseTapIcon" class="fa-solid fa-x fa-xs position-absolute " style="color: rgb(162, 160, 160); right: 16px; top:20px; cursor: pointer;"></i>
-
-
-
-
-                            <h5 style="margin: 40px 0px 10px 0px;">Change user Image</h5>
-                            <a href="" style="" class=" " data-toggle="modal" data-target="#profile">
-
-                                <% if(userImg.public_id && userImg.secure_url){ %>
-                                    <img src="<%= userImg.secure_url %>" class="avatar  "
-                                        style="border: #1CB5E0 solid 3px; border-radius: 100px;" alt="">
-
-                                    <% } else { %>
-                                        <img src="img/avatar.png" class="avatar  "
-                                            style="border: #1CB5E0 solid 3px; border-radius: 100px;" alt="">
-
-                                        <% } %>
-                            </a>
-
-                            <div style=" padding: 20px; "
-                                class=" d-flex  justify-content-center align-items-center text-center">
-
-
-
-                                <form action="/handelChangeUserProfileImg" method="POST" enctype="multipart/form-data">
-
-                                    <input
-                                        style="width:100%;  border: #1CB5E0 1px solid; padding: 15px 0px 15px 22px; border-radius: 20px;"
-                                        type="file" name="image" id="image" accept="image/*">
-
-
-                                    <button style=" " class="btn btn-default-Btn2  mt-4 text-white  ">
-
-
-                                        Upload your new photo
-
-                                    </button>
-
-                                </form>
-
-
-
-                            </div>
-
-
-
-                        </div>
-                    </div>
-                    <div id="ChangeUserPassword" style="background-color: rgb(0, 0, 0 , 0.6); height: 100vh; width: 100%; z-index: 17; "    class="position-fixed px d-flex justify-content-center align-items-center animate__animated  animate__fadeOut ">
-                        <div id="ChangeUserPasswordContainer" style="border-radius: 10px; display: flex; align-items: center;  justify-content: center;" class="card py-4 position-relative  m-auto animate__animated  animate__fadeOutDown">
-                            <i id="ChangeUserPasswordCloseTapIcon" class="fa-solid fa-x fa-xs position-absolute " style="color: rgb(162, 160, 160); right: 16px; top:20px; cursor: pointer;"></i>
-
-
-
-
-
-                            <h5 style="margin: 0px 0px 10px 0px; font-size: 1rem;">Change user password</h5>
-                            <div style=" "  class="PassCard d-flex  justify-content-center align-items-center text-center">
-
-                                <form action="/handelChangeUserPassword" method="post">
-
-
-
-
-
-                                    <div class="form-group">
-
-                                        <div style=" " class="position-relative">
-                                            <input type="password" style="border-radius: 10px; padding-top:4px;"
-                                                class="form-control " id="oldPasswordInput" name="oldPassword"
-                                                placeholder="old Password">
-
-                                            <i id="mySlashEyePassInput1"
-                                                class="fa-solid fa-eye-slash position-absolute m-auto  "
-                                                style="color: rgb(116, 192, 252); bottom:0; top:11px; right:12px; cursor: pointer;"></i>
-
-                                        </div>
-
-
-                                        <div class="position-relative">
-                                            <input type="password" style="border-radius: 10px; padding-top:4px;"
-                                                class="form-control " id="NewUSerPasswordInput" name="newPassword"
-                                                placeholder="New Password">
-                                            <i id="mySlashEyePassInput2"
-                                                class="fa-solid fa-eye-slash position-absolute m-auto  "
-                                                style="color: rgb(116, 192, 252); bottom:0; top:11px; right:12px; cursor: pointer;"></i>
-                                        </div>
-
-
-                                        <div class="position-relative">
-                                            <input type="password" style="border-radius: 10px; padding-top:4px;"
-                                                class="form-control " id="PasswordConfirmationInput"
-                                                name="PasswordConfirmation" placeholder="Password confirmation">
-                                            <i id="mySlashEyePassInput3"
-                                                class="fa-solid fa-eye-slash position-absolute m-auto  "
-                                                style="color: rgb(116, 192, 252); bottom:0; top:11px; right:12px; cursor: pointer;"></i>
-                                        </div>
-
-                                    </div>
-
-
-
-                                    <button style=" " class="btn btn-default-Btn2  mt-4  text-white ">
-                                        Change Password
-                                    </button>
-
-                                </form>
-
-
-
-                            </div>
-
-
-
-                        </div>
-                    </div>
-
-
-
-                 
-<!-- /navbar -->
-
-
-<!-- /navbar -->
-<nav class="navbar navbar-expand-lg bg-custom navbar-dark bg-dark ">
-    <div class="container">
-        <a class="navbar-brand" href="/message"><img src="img/logo300.png" width="54" alt=""> </a>
-  
-
-        <div class="MyCustomNavCollapse " id="navbarSupportedContent">
-            <ul  class="navbar-nav ms-auto mainNotificationUL ">
-                
-               <li class="nav-item dropdown " style="margin-right: 20px; margin-top: 2px;" id="notification-dropdown">
-               <a class="nav-link position-relative  " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <input type="hidden" id="userId-hidden" value="<%= session.userId %>">
-                <i style="margin-right: 2px;" class="fas fa-bell"></i>
-                <span id="notification-badge" class="position-absolute top-25 start-100 translate-middle badge rounded-pill bg-danger ">
-                    0
-                </span>
-               </a>
-               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown" id="notification-list" style="width: 300px; max-height: 400px; overflow-y: auto; margin-left: -150px; margin-top: 7px; ">
-                   <li><h6 class="dropdown-header">notification</h6></li>
-                   <div id="notifications-container">
-                   </div>
-                   <li><hr class="dropdown-divider"></li>
-                   <li><a class="dropdown-item text-center small text-primary" href="/message">See all Messages</a></li>
-               </ul>
-                </li>
-
-
-
-
-
-             
-                <li class="nav-item">
-                    <a class="nav-link" href="/ChangeUserData">Settings</a>
-                </li>
-            
+    <% if (validationErrors && validationErrors.length> 0) { %>
+        <div St class="alert alert-warning animate__animated animate__fadeInDown" style="margin: 20px; z-index: 20;">
+            <h5 class="alert-heading"><i class="fas fa-exclamation-triangle"></i> Please check the following:</h5>
+            <ul class="mb-0">
+                <% validationErrors.forEach(err=> { %>
+                    <li>
+                        <%= err %>
+                    </li>
+                    <% }) %>
             </ul>
         </div>
-    </div>
-</nav>
+        <% } %>
 
-
-
-
-                    <!-- profile photo Modal -->
-                    <div id="UserSettingsContainer" class="container text-center py-5 my-5 text-center">
-                        <div style="border-radius: 20px; cursor: pointer;" class="card border-3 border ">
-                            <a style="margin-bottom: 60px;"  class="position-relative  " >
-                                <% if(userImg.public_id && userImg.secure_url){ %>
-                                    
-                                    <img id="changeUserImgAvatar" src="<%= userImg.secure_url %>"class="avatar position-absolute "  style="border: #1CB5E0 solid 3px; border-radius: 100px;" alt="">
-                                    <% } else { %>
-                                        <img id="changeUserImgAvatar" src="img/avatar.png" class="avatar position-absolute " style="border: #1CB5E0 solid 3px; border-radius: 100px;" alt="">
-                                        <% } %>
-                                            <div id="changeUserImgAvatarPenIcon"  style="background-color: white; border-radius: 100px; width: 40px; height: 40px;   left: 40px; right: 0; top: 20px; border: #1CB5E0 solid 2px;"  class="position-absolute mx-auto d-flex justify-content-center  align-items-center">  <i class="fa-solid fa-pen" style="color: rgb(116, 192, 252);"></i></div>
-                            </a>
-
-
-                            <h3 style="margin-bottom: -30px; " class="py-2">
-                                <%= userName %>
-                            </h3>
-
-
-
-
-
-                            <div class="page-wrapper text-white text-center ">
-
-                                <!-- Profile Section -->
-                                <p style="font-size: 1.3rem; color: #1CB5E0;" class="small">User Account settings</p>
-
-
-                                <!-- Main Settings Card -->
-                                <div class="card shadow settings-card mt-4 text-dark">
-
-                                    <a href="#" id="OpenChangeInfoTap"
-                                        class=" first-list text-decoration-none text-dark settings-item d-flex justify-content-between align-items-center border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <i class="fa-solid fa-address-card" style="color: #1CB5E0;"></i>
-                                            <span>Change User Informations</span>
-                                        </div>
-                                        <i class="fa-solid fa-chevron-right text-muted"></i>
-                                    </a>
-
-                                    <a href="#" id="OpenChangePassTap"
-                                        class="text-decoration-none text-dark settings-item d-flex justify-content-between align-items-center border-bottom">
-                                        <div class="d-flex align-items-center gap-2 ">
-                                            <i class="fa-solid fa-fingerprint " style="color: #1CB5E0;"></i>
-                                            <span class="ms-2">Change password</span>
-                                        </div>
-                                        <i class="fa-solid fa-chevron-right text-muted"></i>
-                                    </a>
-
-                                    <a href="/logout"
-                                        class="last-list text-decoration-none text-dark settings-item d-flex justify-content-between align-items-center border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <i class="fa-solid fa-right-from-bracket" style="color: #1CB5E0;"></i>
-                                            <span class="ms-2">Logout</span>
-                                        </div>
-                                        <i class="fa-solid fa-chevron-right text-muted"></i>
-                                    </a>
-                                </div>
-
-                                <div class="card shadow settings-card mt-4 text-dark">
-
-                                    <a href="#" id="OpenDeleteAccountTap"
-                                        class=" middle-list text-decoration-none text-dark settings-item d-flex justify-content-between align-items-center border-bottom">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <i class="fa-solid fa-trash-can" style="color: rgb(116, 192, 252);"></i>
-                                            <span>Delete Your Account</span>
-                                        </div>
-                                        <i class="fa-solid fa-chevron-right text-muted"></i>
-                                    </a>
-
-
-                                </div>
-
-                            </div>
+            <% if (error && error.length> 0) { %>
+                <div class="alert alert-danger custom-alert" id="auto-close-alert">
+                    <%= error[0] %>
+                </div>
+                <% } %>
+                    <% if (success && success.length> 0) { %>
+                        <div class="alert alert-success custom-alert" id="auto-close-alert">
+                            <%= success[0] %>
                         </div>
+                        <% } %>
 
 
 
 
-<%- include("footer.ejs")%>
+                            <div id="DeleteUserAccountTap"
+                                style="background-color: rgb(0, 0, 0 , 0.6); height: 100vh; width: 100%; z-index: 17; "
+                                class="position-fixed px d-flex justify-content-center align-items-center  animate__animated  animate__fadeOut ">
+                                <div id="DeleteUserAccountContainer"
+                                    style="border-radius: 10px; display: flex; align-items: center;  justify-content: center;"
+                                    class="card py-4 position-relative  m-auto animate__animated  animate__fadeOutDown">
+                                    <i id="closeTapIcon" class="fa-solid fa-x fa-xs position-absolute "
+                                        style="color: rgb(162, 160, 160); right: 16px; top:20px; cursor: pointer;"></i>
+
+
+
+                                    <h5 style="margin: 0px 0px 10px 0px; font-size: 1rem;" class="">Delete user Account
+                                    </h5>
+
+                                    <div
+                                        class="DeleteAccountCard d-flex  justify-content-center align-items-center text-center">
+
+                                        <form action="/handelDeleteUserAccount" method="post">
+
+
+
+
+
+                                            <div style="margin-bottom: -10px;" class="form-group">
+                                                <h3 id="DeleteUserTitle" class="text-secondary">are you sure you want to
+                                                    delete
+                                                    your Account</h3>
+                                                <div class="">
+                                                    <input type="email" style="border-radius: 10px; padding-top:4px;"
+                                                        class="form-control " id="email" name="email"
+                                                        placeholder="User email">
+                                                </div>
+                                            </div>
+
+
+
+
+                                            <div id="BtnDeleteAccountGroup"
+                                                class=" w-auto d-flex flex-wrap justify-content-between">
+
+                                                <button class="btn btn-default-Btn-delete mt-4 text-white">
+                                                    <i class="fa-solid fa-trash-can fa-xs "
+                                                        style="color: rgb(255, 255, 255);"></i>
+                                                    Delete Account
+                                                </button>
+
+
+
+                                                <span id="GoBackBtn" class="btn btn-default-Btn-no mt-4 text-white">
+                                                    <i class="fa-solid fa-ban fa-xs"
+                                                        style="color: rgb(255, 255, 255);"></i>
+                                                    No dont Delete
+                                                </span>
+
+                                            </div>
+
+                                        </form>
+
+
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                            <div id="ChangeUserInformations"
+                                style="background-color: rgb(0, 0, 0 , 0.6); height: 100vh; width: 100%; z-index: 17; "
+                                class="position-fixed px d-flex justify-content-center align-items-center  animate__animated  animate__fadeOut">
+                                <div id="ChangeUserInformationsContainer"
+                                    style="border-radius: 10px; display: flex; align-items: center;  justify-content: center;"
+                                    class="card py-4 position-relative  m-auto animate__animated  animate__fadeOutDown">
+
+
+                                    <i id="ChangeUserInfoCloseTapIcon" class="fa-solid fa-x fa-xs position-absolute "
+                                        style="color: rgb(162, 160, 160); right: 16px; top:20px; cursor: pointer;"></i>
+
+
+
+                                    <h5 style="margin: 0px 0px 10px 0px; font-size: 1rem;">Change user Informations</h5>
+                                    <div
+                                        class="InformationsCard d-flex  justify-content-center align-items-center text-center">
+
+                                        <form action="/handelChangeUserInformations" method="post">
+
+
+
+
+
+                                            <div class="form-group">
+
+                                                <div class="">
+                                                    <input type="text" style="border-radius: 10px; padding-top:4px;"
+                                                        class="form-control " id="name" name="name"
+                                                        placeholder="User name">
+                                                </div>
+
+
+                                                <div class="">
+                                                    <select
+                                                        style="border-radius: 10px; padding-top:4px; width: 100%; padding: 8px; background-color: white; border: 1px solid rgb(206, 212, 218); color: gray;"
+                                                        id="gender" name="gender" class="form-select"
+                                                        aria-label="Default select example">
+                                                        <option disabled selected hidden>gender</option>
+                                                        <option style="color: black;" value="male">male</option>
+                                                        <option style="color: black;" value="female">female</option>
+                                                    </select>
+                                                </div>
+
+
+
+                                                <textarea class="form-control"
+                                                    style="border-radius: 10px; padding-top:4px;" id="about"
+                                                    name="about" placeholder="About" rows="3"></textarea>
+
+
+                                            </div>
+
+
+
+                                            <button style=" " class="btn btn-default-Btn2  mt-4 text-white  ">
+                                                Change Informations
+                                            </button>
+
+                                        </form>
+
+
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                            <div id="UploadImgContainer"
+                                style="background-color: rgb(0, 0, 0 , 0.6); height: 100vh; width: 100%; z-index: 17; "
+                                class="position-fixed px d-flex justify-content-center align-items-center animate__animated  animate__fadeOut ">
+                                <div id="UploadImgInnerContainer"
+                                    style="border-radius: 10px; display: flex; align-items: center;  justify-content: center;"
+                                    class="card py-4 w-75 m-auto position-relative animate__animated  animate__fadeOutDown">
+
+                                    <i id="ChangeUserProfileIMGCloseTapIcon"
+                                        class="fa-solid fa-x fa-xs position-absolute "
+                                        style="color: rgb(162, 160, 160); right: 16px; top:20px; cursor: pointer;"></i>
+
+
+
+
+                                    <h5 style="margin: 40px 0px 10px 0px;">Change user Image</h5>
+                                    <a href="" style="" class=" " data-toggle="modal" data-target="#profile">
+
+                                        <% if(userImg.public_id && userImg.secure_url){ %>
+                                            <img src="<%= userImg.secure_url %>" class="avatar  "
+                                                style="border: #1CB5E0 solid 3px; border-radius: 100px;" alt="">
+
+                                            <% } else { %>
+                                                <img src="img/avatar.png" class="avatar  "
+                                                    style="border: #1CB5E0 solid 3px; border-radius: 100px;" alt="">
+
+                                                <% } %>
+                                    </a>
+
+                                    <div style=" padding: 20px; "
+                                        class=" d-flex  justify-content-center align-items-center text-center">
+
+
+
+                                        <form action="/handelChangeUserProfileImg" method="POST"
+                                            enctype="multipart/form-data">
+
+                                            <input
+                                                style="width:100%;  border: #1CB5E0 1px solid; padding: 15px 0px 15px 22px; border-radius: 20px;"
+                                                type="file" name="image" id="image" accept="image/*">
+
+
+                                            <button style=" " class="btn btn-default-Btn2  mt-4 text-white  ">
+
+
+                                                Upload your new photo
+
+                                            </button>
+
+                                        </form>
+
+
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                            <div id="ChangeUserPassword"
+                                style="background-color: rgb(0, 0, 0 , 0.6); height: 100vh; width: 100%; z-index: 17; "
+                                class="position-fixed px d-flex justify-content-center align-items-center animate__animated  animate__fadeOut ">
+                                <div id="ChangeUserPasswordContainer"
+                                    style="border-radius: 10px; display: flex; align-items: center;  justify-content: center;"
+                                    class="card py-4 position-relative  m-auto animate__animated  animate__fadeOutDown">
+                                    <i id="ChangeUserPasswordCloseTapIcon"
+                                        class="fa-solid fa-x fa-xs position-absolute "
+                                        style="color: rgb(162, 160, 160); right: 16px; top:20px; cursor: pointer;"></i>
+
+
+
+
+
+                                    <h5 style="margin: 0px 0px 10px 0px; font-size: 1rem;">Change user password</h5>
+                                    <div style=" "
+                                        class="PassCard d-flex  justify-content-center align-items-center text-center">
+
+                                        <form action="/handelChangeUserPassword" method="post">
+
+
+
+
+
+                                            <div class="form-group">
+
+                                                <div style=" " class="position-relative">
+                                                    <input type="password" style="border-radius: 10px; padding-top:4px;"
+                                                        class="form-control " id="oldPasswordInput" name="oldPassword"
+                                                        placeholder="old Password">
+
+                                                    <i id="mySlashEyePassInput1"
+                                                        class="fa-solid fa-eye-slash position-absolute m-auto  "
+                                                        style="color: rgb(116, 192, 252); bottom:0; top:11px; right:12px; cursor: pointer;"></i>
+
+                                                </div>
+
+
+                                                <div class="position-relative">
+                                                    <input type="password" style="border-radius: 10px; padding-top:4px;"
+                                                        class="form-control " id="NewUSerPasswordInput"
+                                                        name="newPassword" placeholder="New Password">
+                                                    <i id="mySlashEyePassInput2"
+                                                        class="fa-solid fa-eye-slash position-absolute m-auto  "
+                                                        style="color: rgb(116, 192, 252); bottom:0; top:11px; right:12px; cursor: pointer;"></i>
+                                                </div>
+
+
+                                                <div class="position-relative">
+                                                    <input type="password" style="border-radius: 10px; padding-top:4px;"
+                                                        class="form-control " id="PasswordConfirmationInput"
+                                                        name="PasswordConfirmation" placeholder="Password confirmation">
+                                                    <i id="mySlashEyePassInput3"
+                                                        class="fa-solid fa-eye-slash position-absolute m-auto  "
+                                                        style="color: rgb(116, 192, 252); bottom:0; top:11px; right:12px; cursor: pointer;"></i>
+                                                </div>
+
+                                            </div>
+
+
+
+                                            <button style=" " class="btn btn-default-Btn2  mt-4  text-white ">
+                                                Change Password
+                                            </button>
+
+                                        </form>
+
+
+
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+
+
+
+                            <!-- /navbar -->
+
+
+                            <!-- /navbar -->
+                            <nav class="navbar navbar-expand-lg bg-custom navbar-dark bg-dark ">
+                                <div class="container">
+                                    <a class="navbar-brand" href="/message"><img src="img/logo300.png" width="54"
+                                            alt=""> </a>
+
+
+                                    <div class="MyCustomNavCollapse " id="navbarSupportedContent">
+                                        <ul class="navbar-nav ms-auto mainNotificationUL ">
+
+                                            <li class="nav-item dropdown" style="margin-right: 20px; margin-top: 2px;"
+                                                id="notification-dropdown">
+                                                <a class="nav-link position-relative" href="#" id="navbarDropdown"
+                                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <input type="hidden" id="userId-hidden"
+                                                        value="<%= session.userId %>">
+                                                    <i style="margin-right: 2px;" class="fas fa-bell"></i>
+                                                    <span id="notification-badge"
+                                                        class="position-absolute top-25 start-100 translate-middle badge rounded-pill bg-danger">
+                                                        <%= falseNotificationCount %>
+                                                    </span>
+                                                </a>
+                                                <ul class="dropdown-menu dropdown-menu-end animate__animated notification-list"
+                                                    aria-labelledby="navbarDropdown"
+                                                    style="width: 300px; max-height: 400px; overflow-y: auto; margin-left: -150px; margin-top: 7px;">
+                                                    <li>
+                                                        <h6 class="dropdown-header">Notifications</h6>
+                                                    </li>
+
+                                                    <div id="real-time-notifications">
+                                                        <% if (notifications && notifications.length> 0) { %>
+                                                            <% notifications.forEach(noti=> { %>
+                                                                <li class="dropdown-item border-bottom">
+                                                                    <p class="mb-0">
+                                                                        <%= noti.content %>
+                                                                    </p>
+                                                                    <small class="text-muted">
+                                                                        <%= new
+                                                                            Date(noti.createdAt).toLocaleString('en-US')
+                                                                            %>
+                                                                    </small>
+                                                                </li>
+                                                                <% }) %>
+                                                                    <% } else { %>
+                                                                        <li id="no-notifications"
+                                                                            class="dropdown-item text-center">No new
+                                                                            notifications</li>
+                                                                        <% } %>
+                                                    </div>
+
+                                                    <li>
+                                                        <hr class="dropdown-divider">
+                                                    </li>
+                                                    <li><a class="dropdown-item text-center small text-primary"
+                                                            href="/message">See all Messages</a></li>
+                                                </ul>
+                                            </li>
+
+
+
+
+
+                                            <li class="nav-item">
+                                                <a class="nav-link" href="/ChangeUserData">Settings</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </nav>
+
+
+
+
+
+                            <!-- profile photo Modal -->
+                            <div id="UserSettingsContainer" class="container text-center py-5 my-5 text-center">
+                                <div style="border-radius: 20px; cursor: pointer;" class="card border-3 border ">
+                                    <a style="margin-bottom: 60px;" class="position-relative  ">
+                                        <% if(userImg.public_id && userImg.secure_url){ %>
+
+                                            <img id="changeUserImgAvatar" src="<%= userImg.secure_url %>"
+                                                class="avatar position-absolute "
+                                                style="border: #1CB5E0 solid 3px; border-radius: 100px;" alt="">
+                                            <% } else { %>
+                                                <img id="changeUserImgAvatar" src="img/avatar.png"
+                                                    class="avatar position-absolute "
+                                                    style="border: #1CB5E0 solid 3px; border-radius: 100px;" alt="">
+                                                <% } %>
+                                                    <div id="changeUserImgAvatarPenIcon"
+                                                        style="background-color: white; border-radius: 100px; width: 40px; height: 40px;   left: 40px; right: 0; top: 20px; border: #1CB5E0 solid 2px;"
+                                                        class="position-absolute mx-auto d-flex justify-content-center  align-items-center">
+                                                        <i class="fa-solid fa-pen"
+                                                            style="color: rgb(116, 192, 252);"></i></div>
+                                    </a>
+
+
+                                    <h3 style="margin-bottom: -30px; " class="py-2">
+                                        <%= userName %>
+                                    </h3>
+
+
+
+
+
+                                    <div class="page-wrapper text-white text-center ">
+
+                                        <!-- Profile Section -->
+                                        <p style="font-size: 1.3rem; color: #1CB5E0;" class="small">User Account
+                                            settings</p>
+
+
+                                        <!-- Main Settings Card -->
+                                        <div class="card shadow settings-card mt-4 text-dark">
+
+                                            <a href="#" id="OpenChangeInfoTap"
+                                                class=" first-list text-decoration-none text-dark settings-item d-flex justify-content-between align-items-center border-bottom">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <i class="fa-solid fa-address-card" style="color: #1CB5E0;"></i>
+                                                    <span>Change User Informations</span>
+                                                </div>
+                                                <i class="fa-solid fa-chevron-right text-muted"></i>
+                                            </a>
+
+                                            <a href="#" id="OpenChangePassTap"
+                                                class="text-decoration-none text-dark settings-item d-flex justify-content-between align-items-center border-bottom">
+                                                <div class="d-flex align-items-center gap-2 ">
+                                                    <i class="fa-solid fa-fingerprint " style="color: #1CB5E0;"></i>
+                                                    <span class="ms-2">Change password</span>
+                                                </div>
+                                                <i class="fa-solid fa-chevron-right text-muted"></i>
+                                            </a>
+
+                                            <a href="/logout"
+                                                class="last-list text-decoration-none text-dark settings-item d-flex justify-content-between align-items-center border-bottom">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <i class="fa-solid fa-right-from-bracket"
+                                                        style="color: #1CB5E0;"></i>
+                                                    <span class="ms-2">Logout</span>
+                                                </div>
+                                                <i class="fa-solid fa-chevron-right text-muted"></i>
+                                            </a>
+                                        </div>
+
+                                        <div class="card shadow settings-card mt-4 text-dark">
+
+                                            <a href="#" id="OpenDeleteAccountTap"
+                                                class=" middle-list text-decoration-none text-dark settings-item d-flex justify-content-between align-items-center border-bottom">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <i class="fa-solid fa-trash-can"
+                                                        style="color: rgb(116, 192, 252);"></i>
+                                                    <span>Delete Your Account</span>
+                                                </div>
+                                                <i class="fa-solid fa-chevron-right text-muted"></i>
+                                            </a>
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+
+
+                                <%- include("footer.ejs")%>

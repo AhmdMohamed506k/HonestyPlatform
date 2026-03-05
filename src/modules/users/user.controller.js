@@ -4,6 +4,7 @@ import cloudinary from "../../utils/Cloudinary/Cloudinary.js";
 import { sendEmail } from "../../utils/NodeMailer/SendEmail.js";
 import session from "express-session";
 import messageModel from "../../../db/models/message.model.js";
+import notificationModel from "../../../db/models/Notification.model.js";
 import { redisClient } from "../../utils/Redis/Redisconfig.js";
 import { customAlphabet } from "nanoid";
 
@@ -286,9 +287,20 @@ export const ChangeUserData = async (req, res, next) => {
     await redisClient.del(`user:profile:${req.session.userId}`);
     req.session.userImg = user.userImg;
 
+      const notificationCount = await notificationModel.countDocuments({ notificationCount: false })
+
+
+     const notifications = await notificationModel.find({ recipient: req.session.userId })
+        .sort({ createdAt: -1 })
+        .limit(10); 
+            
+
+
     res.render("UserSettings.ejs", {
       session: req.session,
       user: user,
+      falseNotificationCount:notificationCount,
+      notifications:notifications,
       userName: user.name,
       userImg: user.profileImg,
     });

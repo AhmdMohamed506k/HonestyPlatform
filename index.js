@@ -9,12 +9,20 @@ import flash from "connect-flash"
 import {connectRedis ,redisClient} from "./src/utils/Redis/Redisconfig.js";
 import { RedisStore } from "connect-redis";
 import NotificationsRouter from "./src/modules/Notifications/Notifications.routes.js";
-
+import dotenv from "dotenv"
 const app = express();
-const port = 3000;
+const port = process.env.Port || 3000;
 
 const httpServer = createServer(app);
 initSocket(httpServer);
+
+
+dotenv.config()
+
+
+
+
+
 
 
 let redisStore = new RedisStore({
@@ -42,10 +50,11 @@ app.use(express.static("public"));
 app.use((req, res, next) => {
     res.locals.error = req.flash("error");
     res.locals.success = req.flash("success");
+    res.locals.validationErrors = req.flash("validationErrors"); 
+    res.locals.user = req.session.user || null;
+    res.locals.loggedIn = req.session.loggedIn || false;
     next();
 });
-
-
 
 
 
