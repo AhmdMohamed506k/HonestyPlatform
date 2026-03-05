@@ -12,7 +12,7 @@ const userRouter = Router();
 
 
 // =====================MainPage==================================//
-userRouter.get("/Home", Us.sarahahIndex);
+userRouter.get("/", Us.sarahahIndex);
 
 // =====================SendMassage==============================//
 userRouter.get("/User/:id", Us.user);

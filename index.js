@@ -10,14 +10,18 @@ import {connectRedis ,redisClient} from "./src/utils/Redis/Redisconfig.js";
 import RedisStore from "connect-redis";
 import NotificationsRouter from "./src/modules/Notifications/Notifications.routes.js";
 import dotenv from "dotenv"
+
+
+dotenv.config()
+
+
 const app = express();
-const port = process.env.Port || 3000;
+const port = process.env.PORT || 3000;
 
 const httpServer = createServer(app);
 initSocket(httpServer);
 
 
-dotenv.config()
 
 
 
