@@ -9,6 +9,8 @@ import flash from "connect-flash"
 import {connectRedis ,redisClient} from "./src/utils/Redis/Redisconfig.js";
 import RedisStore from "connect-redis";
 import NotificationsRouter from "./src/modules/Notifications/Notifications.routes.js";
+import path from 'path';
+import { fileURLToPath } from 'url';
 import dotenv from "dotenv"
 
 
@@ -24,7 +26,11 @@ initSocket(httpServer);
 
 
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 
 
