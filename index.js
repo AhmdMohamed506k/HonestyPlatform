@@ -7,7 +7,7 @@ import messageRouter from "./src/modules/messages/message.routes.js";
 import connectionDB from "./db/connectionDB.js";
 import flash from "connect-flash"
 import {connectRedis ,redisClient} from "./src/utils/Redis/Redisconfig.js";
-import { RedisStore } from "connect-redis";
+import RedisStore from "connect-redis";
 import NotificationsRouter from "./src/modules/Notifications/Notifications.routes.js";
 import dotenv from "dotenv"
 const app = express();
