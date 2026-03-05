@@ -61,7 +61,9 @@ app.use((req, res, next) => {
 });
 
 
-
+app.get('/', (req, res) => {
+    res.redirect('/Home'); 
+});
 app.use(userRouter);
 app.use(NotificationsRouter);
 app.use(messageRouter);
