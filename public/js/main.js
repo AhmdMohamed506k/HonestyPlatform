@@ -269,7 +269,8 @@ socket.on('receiveRealTimeMessage', (data) => {
 
 
 
-document.getElementById('notification-dropdown').addEventListener('click', async () => {
+if(document.getElementById('notification-dropdown')){
+   document.getElementById('notification-dropdown').addEventListener('click', async () => {
      
     
     localStorage.setItem("notification", "0");
@@ -282,6 +283,9 @@ document.getElementById('notification-dropdown').addEventListener('click', async
         addNotificationToDropdown();
     }, 9000); 
 });
+ 
+}
+
 
 
 // === User-Messeges === //
