@@ -7,12 +7,12 @@ const messageSchema = new mongoose.Schema({
     contant: String,
     userId: {
         type: Types.ObjectId,
-        ref:"ref"
+        ref:"user"
     }
-})
+},{ timestamps: true })
 
 
-messageSchema.index({userId:1},{unique:1})
+
 const messageModel = model("message", messageSchema);
 
 
