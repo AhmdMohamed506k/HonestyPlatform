@@ -238,7 +238,7 @@ function timeAgo(date) {
     return "Just now";
 }
 socket.on('receiveRealTimeMessage', (data) => {
-    console.log("New message received:", data); 
+  
 
     
     let count = JSON.parse(localStorage.getItem("notification")) || 0;
