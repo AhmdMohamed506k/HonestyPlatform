@@ -29,8 +29,9 @@ export const message = async (req, res, next) => {
              
         } else {
           
-            messages = await messageModel.find({ userId }).sort({ createdAt: -1 });
-            
+            messages = await messageModel.find({userId}).sort({ createdAt: -1 }).limit(10);
+           
+             
             await redisClient.setEx(cacheKey, 300, JSON.stringify(messages));
             
         }
