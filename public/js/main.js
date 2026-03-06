@@ -58,7 +58,7 @@ window.addEventListener("DOMContentLoaded", async function() {
     flag = false;
     console.log(flag);
      AnimatedPages()
-  }, 530);
+  }, 1530);
 
 
   if (alertBox) {
@@ -289,7 +289,7 @@ document.getElementById('notification-dropdown').addEventListener('click', async
 });
 
 
-
+// === User-Messeges === //
 function updateNotificationBadge(count) {
     const badge = document.querySelector("#notification-badge");
     if (badge) {
@@ -348,7 +348,7 @@ addNotificationToDropdown()
 
 
 
-// === User-Messeges === //
+
 
 
 

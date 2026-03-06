@@ -217,10 +217,14 @@ export const handleRegister = async (req, res, next) => {
 
   const UserExist = await userModel.findOne({ email });
   if (UserExist) {
-    return res.redirect("/register?error=sorry Email is already registered ");
+   
+    req.flash("error", "sorry Email is already registered");
+    return res.redirect("/register");
   }
   if (password !== PasswordConfirmation) {
-    return res.redirect("/register?error=sorry wrong PasswordConfirmation ");
+ 
+      req.flash("error", "sorry wrong PasswordConfirmation");
+    return res.redirect("/register");
   }
   const DecodedPass = await bcrypt.hash(password, 10);
 
