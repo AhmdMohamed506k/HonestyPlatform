@@ -51,7 +51,8 @@ export const handelChangeUserPasswordValition = {
 };
 export const handelChangeUserInformationsValidation = {
     body: Joi.object({
-        name: Joi.string().min(3).max(30).trim().required(),
+        name: Joi.string().min(1).max(30).trim().required(),
+        gender: Joi.string().required(),
         about: Joi.string().min(3).max(1500).trim().required(),
     }),
 };
