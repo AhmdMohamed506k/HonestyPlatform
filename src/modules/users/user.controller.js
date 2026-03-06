@@ -391,7 +391,7 @@ export const handelChangeUserPassword = async (req, res, next) => {
     res.redirect("/ChangeUserData");
   }
 };
-// =====================ChangeUserpassword==========================//
+// =====================handelChangeUserInformations==========================//
 //Back-end Function
 export const handelChangeUserInformations = async (req, res, next) => {
   try {
