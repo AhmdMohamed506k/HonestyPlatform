@@ -305,6 +305,9 @@ export const ChangeUserData = async (req, res, next) => {
       notifications:notifications,
       userName: user.name,
       userImg: user.profileImg,
+      userId: req.session.userId,
+      PUSHER_KEY: process.env.key, 
+      PUSHER_CLUSTER: process.env.cluster
     });
   } catch (err) {
     console.log(err);

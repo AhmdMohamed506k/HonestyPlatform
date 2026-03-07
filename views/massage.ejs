@@ -54,8 +54,7 @@
                             <!-- /navbar -->
                             <nav class="navbar navbar-expand-lg bg-custom navbar-dark bg-dark ">
                                 <div class="container">
-                                    <a class="navbar-brand" href="/message"><img src="img/logo300.png" width="54"
-                                            alt=""> </a>
+                                    <a class="navbar-brand" href="/message"><img src="img/logo300.png" width="54" alt=""> </a>
 
 
                                     <div class="MyCustomNavCollapse " id="navbarSupportedContent">
@@ -68,6 +67,9 @@
                                           <span id="notification-badge" class="position-absolute top-25 start-100 translate-middle badge rounded-pill bg-danger">
                                               <%= falseNotificationCount  %>
                                           </span>
+                                           <input type="hidden" id="PusherKey" value="<%= PUSHER_KEY %>">
+                                           <input type="hidden" id="PusherCluster" value="<%= PUSHER_CLUSTER %>">
+
                                         </a>
                                       <ul class="dropdown-menu dropdown-menu-end animate__animated notification-list" aria-labelledby="navbarDropdown" style="width: 300px; max-height: 400px; overflow-y: auto; margin-left: -150px; margin-top: 7px;">
                                           <li><h6 class="dropdown-header">Notifications</h6></li>
