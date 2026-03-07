@@ -44,21 +44,28 @@ async function AnimatedPages(params) {
 
   }
 }
-window.addEventListener("DOMContentLoaded", async function() {
+
+
+document.addEventListener("DOMContentLoaded", async function() {
 
   
 
-  setTimeout(() => {
-  
+
+    setTimeout(() => {
     loaderAfter.style.height = "0px";
     loaderBefore.style.height = "0px";
     document.body.style.overflow = "hidden";
     loader.style.opacity = "0";
     document.body.style.overflow = "auto";
     flag = false;
-    console.log(flag);
-     AnimatedPages()
-  }, 1530);
+    
+    AnimatedPages()
+    },150);
+
+
+   
+
+
 
 
   if (alertBox) {

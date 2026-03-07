@@ -90,17 +90,16 @@ export const sendVerificationCode = async (req, res, next) => {
       return res.redirect("/ForgetPassword");
     }
 
-    const generateCode = customAlphabet("1234567890qwertyuiopasgfdk", 6);
+    const generateCode = customAlphabet("1234567890", 6);
     const code = generateCode();
 
     userExist.VerificationCode = code;
     await userExist.save();
 
     req.session.resetEmail = email;
-
     req.session.isVerified = false;
 
-    const SendedEmail = await sendEmail(
+    await sendEmail(
       email,
       "",
       `
@@ -133,7 +132,6 @@ export const sendVerificationCode = async (req, res, next) => {
   `,
     );
 
-    req.flash("success", "Verification code Sended Successfully");
     return res.redirect("/VerificationCodePage");
   } catch (err) {
     console.log(err);

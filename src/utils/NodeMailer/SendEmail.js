@@ -4,16 +4,16 @@ import nodemailer from "nodemailer";
 
 
 
-  const transporter =  nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: "2the2killer2@gmail.com",
-      pass: "xadornkrhdvqgebu"
-    }, tls: {
-      rejectUnauthorized :false
-    }
-  });
-  
+ 
+const transporter = nodemailer.createTransport({
+  host: "smtp.gmail.com",
+  port: 465,
+  secure: true,
+  auth: {
+    user: "2the2killer2@gmail.com",
+    pass: "xadornkrhdvqgebu"
+  }
+});
   
   export const sendEmail = async (to, subject, html) => {
     const info = await transporter.sendMail({
