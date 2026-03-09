@@ -938,7 +938,7 @@ body {
    
 /* ======> register  */
 #MyRegisterForm{
-  margin-bottom: 75px !important;
+  margin-bottom: 85px !important;
   padding: 0px !important;
 }
 
@@ -983,7 +983,7 @@ body {
 
 /* ======> Login  */
 #MyLoginForm{
-  margin-bottom: 95px !important;
+  margin-bottom: 105px !important;
 }
 .MyLoginFormBottom{
   margin-left: 15px  !important;
