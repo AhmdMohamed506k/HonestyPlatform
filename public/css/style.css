@@ -295,6 +295,10 @@ body {
   height: 110vh;
   background-color: #ffff;
 
+
+}
+#IndexBody,#LoginPage,#RegisterPageBody{
+  overflow: hidden !important;
 }
 .HomeTitle {
 
@@ -319,28 +323,44 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-
 }
 #MyRegisterObject {
-
   width: 65%;
   margin: 0;
   z-index: 9;
 }
 .MyRegisterFormContainer {
   padding-top: 5px;
-
-
   background-color: white;
-
   width: 35%;
-
-
   z-index: 9;
-
   border-radius: 15px;
+}
+
+/* ========> Login */
+.LoginContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 
 }
+#MyLoginObject {
+  width: 65%;
+  margin: 0;
+  z-index: 9;
+}
+.MyLoginFormContainer {
+  padding-top: 5px;
+  background-color: white;
+  width: 35%;
+  z-index: 9;
+  border-radius: 15px;
+}
+
+
+
+
+
 /* ======>UserSettings */
 #UserSettingsContainer .card {
   width: 80% ;
@@ -475,12 +495,10 @@ body {
  transition: all !important;
 }
 #DeleteUserAccountTap #DeleteUserAccountContainer .DeleteAccountCard{
-
   width: 80% !important;
 }
 #DeleteUserAccountTap #DeleteUserAccountContainer .DeleteAccountCard form{
- 
-    width: 100% !important;
+  width: 100% !important;
 }
 #DeleteUserAccountContainer{
   width: 30% !important;
@@ -488,7 +506,6 @@ body {
 #DeleteUserTitle{
   font-size: 0.9rem !important;
   transform: scale(100%);
-
 }
 .btn-default-Btn-delete{
   display: block;
@@ -499,7 +516,6 @@ body {
   transition: all 0.8s;
   margin: 0px auto;
 }
-
 .btn-default-Btn-no{
   display: block;
   background-color: #1ab33e !important;
@@ -554,7 +570,6 @@ body {
 .ActiveMessageTap{
   background-color: #1CB5E0 ;
 }
-
 .message-text {
     font-size: 1.1rem;
     color: #333;
@@ -564,7 +579,6 @@ body {
     border-bottom: 1px solid #ddd;
     margin: 15px 0;
 }
-
 .user-avatar-container {
     position: absolute;
     right: -25px;
@@ -580,7 +594,6 @@ body {
     border: 3px solid white;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
-
 .fav-star {
     position: absolute;
     left: 20px;
@@ -589,16 +602,14 @@ body {
     font-size: 1.5rem;
     cursor: pointer;
 }
-
 .fav-star.active { color: #ffc107; }
-
 #coulmn1{
   width: 50% ;
 }
 #MyBtn {
    color:white !important;
    
-  }
+}
 
 
 
@@ -613,6 +624,9 @@ body {
     font-size: 1.9rem !important;
     margin-bottom: 2px !important;
   }
+  #MainBtnGroup{
+    margin:40px 0px 0px 0px !important;
+  }
   .MainParagraph {
     font-size: 0.8rem !important;
     margin-bottom: 25px !important;
@@ -622,30 +636,73 @@ body {
     margin-bottom: 17px;
     padding: 5px 1px !important;
   }
-   #myNav .container{
+  #myNav .container{
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-   }
+  }
   #MyCustomLogoutNav ul{
     display: flex;
     flex-direction: row ;
     align-items: end;
     gap: 10px !important;
-   }
-   
-   #MessageTitleContant{
+  }
+  #MessageTitleContant{
     margin-top: -25px !important;
-   }
+  }
 /* ======> register */
   #MyRegisterObject {
     display: none;
+  }
+  #MyRegisterForm{
+    padding: 0 !important;
   }
   .MyRegisterFormCenter {
 
     border-bottom: none !important;
   }
   .MyRegisterFormContainer {
+    padding-top: 0px !important;
+    background-color: white;
+    position: absolute;
+    width: 95% !important;
+    height: 79% !important;
+    top: 11px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 9;
+
+    border-radius: 5px;
+
+  }
+  .MyRegisterFormContainer #MyRegisterForm p {
+    font-size: 14px;
+    margin-bottom: 1px;
+
+  }
+  #MyBtn {
+    width: 100% !important;
+    margin: 0px !important;
+   
+  }
+  .LinksContainer .GoHomeBtn,
+  .LinksContainer .HaveAccountBtn {
+    display: none;
+  }
+  #ForgetPassText{
+    font-size: 0.8rem !important;
+  }
+
+  /* ======> Login */
+  #MyLoginObject {
+    display: none;
+  }
+  .MyLoginFormCenter {
+
+    border-bottom: none !important;
+  }
+  .MyLoginFormContainer {
     padding-top: 5px;
     background-color: white;
     position: absolute;
@@ -660,20 +717,18 @@ body {
     border-radius: 15px;
 
   }
-  .MyRegisterFormContainer #MyRegisterForm p {
+  .MyLoginFormContainer #MyRegisterForm p {
     font-size: 14px;
     margin-bottom: 1px;
 
   }
-  #MyBtn {
+  #MyLoginBtn {
     width: 100%;
     margin-bottom: 5px;
    
   }
-  .LinksContainer .GoHomeBtn,
-  .LinksContainer .HaveAccountBtn {
-    display: none;
-  }
+
+
 
 /* ======>UserSettings */
 #UserSettingsContainer{
@@ -851,81 +906,131 @@ body {
 @media screen and (min-width: 351px) and (max-width: 768px) {
 
 /* ====>Home */
-  .MyBG {
-
-    height: 140vh;
-    top: -60px !important;
-  }
-  .HomeTitle {
-
-    font-size: 2.4rem;
-    font-weight: 800;
-
-
-  }
-  .MainParagraph {
-    font-size: 1rem;
-
-    margin-bottom: 55px;
-  }
-  .MainBtnGroup a {
-    margin-bottom: 17px;
-  }
-  #myNav .container{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-   }
-  #MyCustomLogoutNav ul{
-    display: flex;
-    flex-direction: row ;
-    align-items: end;
-    gap: 10px !important;
-   }
+.MyBG {
+  height: 140vh;
+  top: -60px !important;
+}
+.HomeTitle {
+  font-size: 2.4rem;
+  font-weight: 800;
+}
+.MainParagraph {
+  font-size: 1rem;
+  margin-bottom: 55px;
+}
+#MainBtnGroup{
+  margin: 0px !important;
+}
+.MainBtnGroup a {
+  margin-bottom: 17px;
+}
+#myNav .container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+#MyCustomLogoutNav ul{
+  display: flex;
+  flex-direction: row ;
+  align-items: end;
+  gap: 10px !important;
+}
    
-/* ======> register */
-  .registerContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+/* ======> register  */
+#MyRegisterForm{
+  margin-bottom: 75px !important;
+  padding: 0px !important;
+}
 
-  }
-  #MyRegisterObject {
-    position: absolute;
-    width: 100% !important;
-    height: 58% !important;
-    z-index: 9;
-  }
-  .MyRegisterFormContainer #MyRegisterForm p {
-    font-size: 14px;
-    margin-bottom: 1px;
+.registerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
 
-  }
-  .MyRegisterFormCenter {
-    padding-bottom: 20px;
-    border-bottom: none !important;
-  }
-  .MyRegisterFormContainer {
-    padding-top: 5px;
+  
+
+}
+#MyRegisterObject {
+  position: absolute;
+  width: 100% !important;
+  height: 58% !important;
+  z-index: 9;
+}
+.MyRegisterFormContainer #MyRegisterForm p {
+  font-size: 14px;
+  margin-bottom: 1px;
+
+}
+.MyRegisterFormCenter {
+ 
+  border-bottom: none !important;
+}
+.MyRegisterFormContainer {
+  padding-top: 5px;
+  background-color: white;
+  position: absolute;
+  width: 100% !important;
+  height: auto !important;
+  bottom: 0;
+  z-index: 9;
+  border-radius: 15px;
+
+}
+#MyBtn {
+  margin-top: 0;
+}
+  
+
+/* ======> Login  */
+#MyLoginForm{
+  margin-bottom: 95px !important;
+}
+.MyLoginFormBottom{
+  margin-left: 15px  !important;
+}
+.LoginContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+}
+#MyLoginObject {
+  position: absolute;
+  width: 100% !important;
+  height: 58% !important;
+  z-index: 9;
+}
+.MyLoginFormContainer #MyLoginForm p {
+  font-size: 14px;
+  margin-bottom: 1px;
+}
+.MyLoginFormCenter {
+  border-bottom: none !important;
+}
+.MyLoginFormContainer {
+  padding-top: 5px;
+  background-color: white;
+  position: absolute;
+  width: 100% !important;
+  height: auto !important;
+  bottom: 0;
+  z-index: 9;
+  border-radius: 15px;
+
+}
+#MyLoginBtn {
+  margin-top: 0;
+}
 
 
-    background-color: white;
-    position: absolute;
-    width: 100% !important;
-    height: auto !important;
-    bottom: 0;
-    z-index: 9;
 
-    border-radius: 15px;
 
-  }
-  #MyBtn {
-    margin-top: 0;
-  }
-  .LinksContainer .GoHomeBtn,
-  .LinksContainer .HaveAccountBtn {
-    display: none;
-  }
+
+
+
+
+
+
 /* ======>UserSettings */
 .page-wrapper {
   width: 100%;
@@ -1025,17 +1130,17 @@ body {
 }
 
 
- /* Notifications */
- .MyCustomNavCollapse .mainNotificationUL{
+/* Notifications */
+.MyCustomNavCollapse .mainNotificationUL{
   display: flex;
   flex-direction: row;
   position: relative;
- }
-  .MyCustomNavCollapse .notification-list{
-    position: absolute;
-    left: -50px;
-    right: 0;
-  }
+}
+.MyCustomNavCollapse .notification-list{
+  position: absolute;
+  left: -50px;
+  right: 0;
+}
 
 
 
@@ -1049,41 +1154,33 @@ body {
 #MessageContainer{
   width:100% !important;
 }
-
-
 #MessageImgAvater{
- 
-   width: 10% !important;
-
+  width: 10% !important;
 }
 #IconHolder{
-
   display: none;
 }
 #MessageCard{
   width: 100% !important;
- 
 }
 #coulmn1{
   width:90% ;
 }
 #totalWraper{
  width: 100% !important;
-
 }
 .MessageBodyWrapper{
   width: 100% !important;
-  
 }
 #MessageCardbody{
   margin-top: 0px !important;
-    width: 100% !important;
+  width: 100% !important;
 
 }
 #MessageContaint{
-   border: none !important;
-   width: 100% !important;
-   margin-bottom: 0px !important;
+  border: none !important;
+  width: 100% !important;
+  margin-bottom: 0px !important;
 }
 #SendMessageTextArea{
   width: 100% !important;
@@ -1091,7 +1188,9 @@ body {
 
 }
 @media screen and (min-width: 769px) and (max-width: 1266px){
-
+  #MainBtnGroup{
+    left: -110px !important;
+  }
 
 #myNav .container{
     display: flex;

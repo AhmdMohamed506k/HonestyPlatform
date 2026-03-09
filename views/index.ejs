@@ -1,7 +1,104 @@
-<%- include("header.ejs")%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honesty-Platform</title>
+    <link rel="shortcut icon" href="/img/favicon-32x32.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body id="IndexBody" style="overflow:hidden !important;">
+
+
+   
 
 
 
+
+
+
+
+    <nav id="myNav" style="z-index: 12; height:14%; width: 100%;  "  class="navbar navbar-expand-lg bg-white navbar-dark     border-bottom border-1 border-opacity-25 border-white ">
+        <div class="container">
+            <a class="navbar-brand" href="/Home"><img src="/img/222.png" width="54" alt=""> </a>
+        
+
+            <div id="MyCustomLogoutNav" class=" " >
+                <ul style="gap: 20px;" class="navbar-nav ms-auto ">
+
+                    <li class="nav-item ">
+
+                         
+
+                        <button type="button" class="button ">
+                            <a style="font-size: 15px;" class="nav-link button__text mt-1" href="/register">
+                          
+                                Register
+                         
+                               <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="100%" x="0" y="0"
+                                    viewBox="0 0 800 800" style="enable-background:new 0 0 512 512" xml:space="preserve"
+                                    class="svg ">
+                                    <g>
+                                        <g fill="#1c274c">
+                                            <path
+                                                d="M366.7 358.3c-87.3 0-158.3-71-158.3-158.3s71-158.3 158.3-158.3S525 112.7 525 200s-71 158.3-158.3 158.3zm0-266.6c-59.7 0-108.3 48.6-108.3 108.3S307 308.3 366.7 308.3 475 259.7 475 200 426.4 91.7 366.7 91.7zM566.7 691.7c-87.3 0-158.3-71-158.3-158.3S479.4 375 566.7 375 725 446 725 533.3s-71 158.4-158.3 158.4zm0-266.7c-59.7 0-108.3 48.6-108.3 108.3S507 641.6 566.7 641.6 675 593.1 675 533.3 626.4 425 566.7 425z"
+                                                fill="#ffffff" opacity="1" data-original="#1c274c"></path>
+                                            <path
+                                                d="M550 591.7h-.9c-7.1-.3-13.7-3.5-18.3-9L503 549.3c-8.8-10.6-7.4-26.4 3.2-35.2s26.4-7.4 35.2 3.2l10 12 41.8-43c9.6-9.9 25.4-10.1 35.4-.5 9.9 9.6 10.1 25.4.5 35.4l-61.1 63c-4.8 4.7-11.3 7.5-18 7.5z"
+                                                fill="#ffffff" opacity="1" data-original="#1c274c"></path>
+                                            <path
+                                                d="M366.7 758.3c-130.2 0-207-15.3-249.1-49.5-19.5-15.9-31.8-36-37.7-61.4-4.8-20.7-4.8-42.8-4.8-64 0-49.5 32.3-94.9 90.8-127.9 54-30.4 125.4-47.1 200.8-47.1 36.4 0 71.9 3.9 105.5 11.5l-11.1 48.8c-30-6.8-61.7-10.3-94.5-10.3-67 0-129.6 14.5-176.3 40.7-42.1 23.7-65.4 53.6-65.4 84.3 0 42.8 1.1 68 24.1 86.7 31.7 25.8 102.8 38.3 217.5 38.3 190.8 0 226.6-35.3 236.4-66l47.6 15.3c-22.7 71.5-105 100.6-283.8 100.6z"
+                                                fill="#ffffff" opacity="1" data-original="#1c274c"></path>
+                                        </g>
+                                    </g>
+                                </svg>
+
+                            </a>
+                          
+                        </button>
+
+
+
+
+
+
+
+                    </li>
+                    <li class="nav-item ">
+
+
+
+                        <div  class="button2  ">
+                            <a class="nav-link button__text2  " href="/login">
+                                Login
+                              <svg xmlns="http://www.w3.org/2000/svg" version="1.1"
+                                    xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="100%" x="0" y="0"
+                                    viewBox="0 0 24 24" style="enable-background:new 0 0 512 512" xml:space="preserve"
+                                    class="svg2 ">
+                                    <g>
+                                        <path
+                                            d="M21.75 6v12A3.383 3.383 0 0 1 18 21.75h-6A3.383 3.383 0 0 1 8.25 18v-1a.75.75 0 0 1 1.5 0v1c0 1.577.673 2.25 2.25 2.25h6c1.577 0 2.25-.673 2.25-2.25V6c0-1.577-.673-2.25-2.25-2.25h-6c-1.577 0-2.25.673-2.25 2.25v1a.75.75 0 0 1-1.5 0V6A3.383 3.383 0 0 1 12 2.25h6A3.383 3.383 0 0 1 21.75 6zm-9.28 8.47a.75.75 0 1 0 1.06 1.06l3-3a.771.771 0 0 0 .162-.244.751.751 0 0 0 0-.574.771.771 0 0 0-.162-.244l-3-3a.75.75 0 0 0-1.06 1.06l1.719 1.72H3a.75.75 0 0 0 0 1.5h11.189z"
+                                            fill="#ffffff" opacity="1" data-original="#000000" class=""></path>
+                                    </g>
+                                </svg>
+                            </a>
+
+                       
+                        </div>
+
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
 
     <div class="LoaderConatiner">
         <div class="LoaderConatinerAfter"></div>
@@ -35,14 +132,14 @@
     <% } %>
 
 
-        <div  style="top: -56px;  overflow: hidden; " class="MyBG position-relative z-1">
+    <div  style="top: -56px;   " class="MyBG position-relative z-1">
         <script id="Home3dImg" type="module" src="https://unpkg.com/@splinetool/viewer@1.12.58/build/spline-viewer.js"></script>
-        <spline-viewer url="https://prod.spline.design/edaxXu65cIlijzjT/scene.splinecode"></spline-viewer>
+        <spline-viewer  url="https://prod.spline.design/edaxXu65cIlijzjT/scene.splinecode"></spline-viewer>
 
 
 
 
-        <div id="MainBtnGroup"  style="position: absolute;top: 0; bottom: 0;  height: 100vh; opacity: 0; " class=" text-center d-flex flex-column justify-content-center align-items-center p-3 ms-5  ">
+        <div id="MainBtnGroup"  style="position: absolute;top: 0; bottom: 0;  height: 100vh; opacity: 0; overflow: hidden !important;" class=" text-center d-flex flex-column justify-content-center align-items-center p-3 ms-5  ">
              <h1 class=" HomeTitle">Wellcome  at </br>Honesty platform</h1>
              <p  class="MainParagraph"  >Honesty allows you to receive constructive feedback from your friends and co-workers</p>
             <div class="MainBtnGroup ">
